@@ -13,9 +13,12 @@ export default function ServiceCard({
   index,
   isOpen = false,
   onToggle,
+  onOpenPopup,
   cardRef,
   badgeRef,
 }) {
+  const isMiddleCard = index === 1 || service.id === 'expert-insights';
+
   const localCardRef = useRef(null);
   const panelRef = useRef(null);
   const contentRef = useRef(null);
@@ -36,15 +39,34 @@ export default function ServiceCard({
     }
   };
 
+  // Only cards that expand inline use the accordion animation hook
   useExpandableCard({
-    isOpen,
+    isOpen: isMiddleCard ? false : isOpen,
     panelRef,
     contentRef,
     arrowRef,
     cardRef: localCardRef,
   });
 
+  const handleCardClick = () => {
+    if (isMiddleCard) {
+      onOpenPopup?.(service);
+    }
+  };
+
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    if (isMiddleCard) {
+      onOpenPopup?.(service);
+    } else {
+      onToggle?.();
+    }
+  };
+
   const handleKeyDown = (e) => {
+    if (isMiddleCard) {
+      return;
+    }
     if (e.key === 'Escape' && isOpen) {
       e.stopPropagation();
       onToggle?.();
@@ -55,8 +77,11 @@ export default function ServiceCard({
   return (
     <div
       ref={setCardRef}
+      onClick={handleCardClick}
       onKeyDown={handleKeyDown}
-      className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
+      className={`group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full ${
+        isMiddleCard ? 'cursor-pointer' : ''
+      }`}
     >
       {/* Top Image taking TOTAL WIDTH of the card */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -93,31 +118,34 @@ export default function ServiceCard({
           {service.description}
         </p>
 
-        {/* Trigger Button replacing bare arrow */}
+        {/* Trigger Button: for middle card opens popup; for others toggles inline */}
         <button
           type="button"
           id={buttonId}
           ref={buttonRef}
-          onClick={onToggle}
-          aria-expanded={isOpen}
-          aria-controls={panelId}
+          onClick={handleButtonClick}
+          aria-expanded={isMiddleCard ? false : isOpen}
+          aria-controls={isMiddleCard ? undefined : panelId}
+          aria-haspopup={isMiddleCard ? 'dialog' : undefined}
           className="see-more-btn mt-6 inline-flex items-center justify-center gap-2 min-h-[44px] px-3 py-2 text-[14px] font-semibold text-orange-500 font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
         >
           <span className="relative inline-grid items-center justify-center">
             <span
               className={`col-start-1 row-start-1 transition-opacity duration-300 ${
-                isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                !isMiddleCard && isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
               }`}
             >
               See more
             </span>
-            <span
-              className={`col-start-1 row-start-1 transition-opacity duration-300 ${
-                isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-              }`}
-            >
-              See less
-            </span>
+            {!isMiddleCard && (
+              <span
+                className={`col-start-1 row-start-1 transition-opacity duration-300 ${
+                  isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+              >
+                See less
+              </span>
+            )}
           </span>
 
           <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5">
@@ -128,27 +156,29 @@ export default function ServiceCard({
           </span>
         </button>
 
-        {/* Collapsible Panel Opens Below Button */}
-        <div
-          id={panelId}
-          ref={panelRef}
-          role="region"
-          aria-labelledby={titleId}
-          aria-hidden={!isOpen}
-          inert={!isOpen}
-          className="w-full overflow-hidden"
-          style={{ height: 0, visibility: 'hidden' }}
-        >
-          <div ref={contentRef} className="pt-4 flex flex-col items-center px-1">
-            {/* Thin short orange divider line (about 40px wide) with ~16px spacing */}
-            <div className="w-10 h-[2px] bg-orange-500 rounded-full mb-4" />
+        {/* Collapsible Panel Opens Below Button (only for non-popup cards) */}
+        {!isMiddleCard && (
+          <div
+            id={panelId}
+            ref={panelRef}
+            role="region"
+            aria-labelledby={titleId}
+            aria-hidden={!isOpen}
+            inert={!isOpen}
+            className="w-full overflow-hidden"
+            style={{ height: 0, visibility: 'hidden' }}
+          >
+            <div ref={contentRef} className="pt-4 flex flex-col items-center px-1">
+              {/* Thin short orange divider line (about 40px wide) with ~16px spacing */}
+              <div className="w-10 h-[2px] bg-orange-500 rounded-full mb-4" />
 
-            {/* Expanded Copy */}
-            <p className="text-[13px] md:text-[14px] font-normal font-['Poppins'] text-slate-500 text-center leading-[1.65] max-w-[340px]">
-              {service.moreText}
-            </p>
+              {/* Expanded Copy */}
+              <p className="text-[13px] md:text-[14px] font-normal font-['Poppins'] text-slate-500 text-center leading-[1.65] max-w-[340px]">
+                {service.moreText}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

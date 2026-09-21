@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SERVICES_CONTENT, ALLOW_MULTIPLE_OPEN } from '../data/content';
 import ServiceCard from './ServiceCard';
+import ServiceModal from './ServiceModal';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +19,7 @@ export default function Services() {
   const badgesRef = useRef([]);
 
   const [openCardIds, setOpenCardIds] = useState([]);
+  const [popupService, setPopupService] = useState(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleToggleCard = (id) => {
@@ -150,12 +152,23 @@ export default function Services() {
               index={index}
               isOpen={openCardIds.includes(service.id)}
               onToggle={() => handleToggleCard(service.id)}
+              onOpenPopup={(svc) => {
+                setOpenCardIds([]);
+                setPopupService(svc);
+              }}
               cardRef={(el) => (cardsRef.current[index] = el)}
               badgeRef={(el) => (badgesRef.current[index] = el)}
             />
           ))}
         </div>
       </div>
+
+      {/* Popup Description Modal for Middle Card */}
+      <ServiceModal
+        service={popupService}
+        isOpen={Boolean(popupService)}
+        onClose={() => setPopupService(null)}
+      />
     </section>
   );
 }

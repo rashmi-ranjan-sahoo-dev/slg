@@ -180,7 +180,7 @@ export default function ShareStory() {
             {/* Actions Row: YouTube link on Left, See more popup button on Right */}
             <div
               ref={actionsRef}
-              className="mt-6 w-full max-w-lg flex items-center justify-between gap-3 pt-3 pb-1 border-t border-slate-100"
+              className="mt-6 sm:mt-7 w-full max-w-lg flex items-center justify-between gap-3 pt-3 sm:pt-4 pb-1 border-t border-slate-100"
             >
               {/* YouTube Link on Left */}
               <a
@@ -188,10 +188,10 @@ export default function ShareStory() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Watch how sharing your story impacts students on YouTube"
-                className="youtube-card-btn inline-flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] font-semibold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
+                className="youtube-card-btn inline-flex items-center gap-2 sm:gap-2.5 min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[19px] font-bold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
               >
-                <span className="w-5 h-5 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
+                <span className="w-6 h-6 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current" aria-hidden="true">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                   </svg>
                 </span>
@@ -206,11 +206,11 @@ export default function ShareStory() {
                 onClick={() => setIsModalOpen(true)}
                 aria-haspopup="dialog"
                 aria-expanded={isModalOpen}
-                className="see-more-btn inline-flex items-center justify-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] font-semibold text-orange-500 font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
+                className="see-more-btn inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[19px] font-bold text-orange-500 font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
               >
                 <span>See more</span>
-                <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5">
-                  <ArrowRight className="w-5 h-5 stroke-[2.8] origin-center" />
+                <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8] origin-center" />
                 </span>
               </button>
             </div>

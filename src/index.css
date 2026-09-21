@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #061330;
+  --color-navy-900: #0A1F4D;
+  --color-navy-800: #0B2A5B;
+  --color-navy-700: #123A7A;
+  --color-navy-600: #1E4E9E;
+
+  --color-orange-400: #FB923C;
+  --color-orange-500: #F97316;
+  --color-orange-600: #EA580C;
+
+  --color-slate-text: #334155;
+  --color-slate-muted: #64748B;
+
+  --color-badge-blue-bg: #E0ECFF;
+  --color-badge-blue-icon: #1E5BD8;
+  --color-badge-peach-bg: #FFE8D2;
+  --color-badge-peach-icon: #EA580C;
+  --color-badge-green-bg: #DDF5E3;
+  --color-badge-green-icon: #16A34A;
+  --color-badge-lavender-bg: #ECE6FA;
+  --color-badge-lavender-icon: #7C3AED;
+  --color-badge-mint-bg: #D5F3EE;
+  --color-badge-mint-icon: #0D9488;
+
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  --radius-card: 12px;
+  --radius-pill: 9999px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-slate-text);
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #ffffff;
+  }
+}
+
+/* Mask gradients for hero image */
+.hero-image-mask {
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 40%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 40%);
+}
+
+@media (max-width: 1023px) {
+  .hero-image-mask {
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 15%, black 35%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 15%, black 35%);
+  }
+}
+
+/* Mentor photo gradient blend into background */
+.mentor-image-mask {
+  mask-image: linear-gradient(to top, transparent 0%, black 25%), linear-gradient(to left, transparent 0%, black 25%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%), linear-gradient(to left, transparent 0%, black 25%);
+  -webkit-mask-composite: source-in;
+}
+
+/* Script text tilt */
+.script-badge {
+  font-family: var(--font-script);
+  transform: rotate(-8deg);
+}
+
+/* Custom subtle card shadows matching template */
+.card-shadow {
+  box-shadow: 0 10px 30px -5px rgba(11, 42, 91, 0.12), 0 4px 12px -2px rgba(11, 42, 91, 0.08);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 20px 40px -5px rgba(11, 42, 91, 0.2), 0 8px 16px -2px rgba(11, 42, 91, 0.12);
+}

@@ -30,6 +30,7 @@ export const YOUTUBE_LINKS = {
   internships: 'https://www.youtube.com/results?search_query=internship+skills+practical+learning',
   expertInsights: 'https://www.youtube.com/results?search_query=industry+expert+career+guidance',
   placements: 'https://www.youtube.com/results?search_query=campus+placement+interview+preparation',
+  shareStory: 'https://www.youtube.com/results?search_query=share+your+story+mentor+students+career+guidance',
 };
 
 export const SERVICES_CONTENT = {
@@ -83,6 +84,36 @@ export const ABOUT_CONTENT = {
   paragraph: 'Your experience can help students understand careers, opportunities and real-world challenges.',
   buttonText: 'JOIN THE INITIATIVE',
   buttonLink: LINKS.joinInitiative,
+  youtubeUrl: YOUTUBE_LINKS.shareStory,
+  extraContent: {
+    guideGeneration: {
+      title: 'Guide the Next Generation',
+      subtitle: 'Share Your Story',
+      paragraph:
+        'If you are an expert, professional, educator, entrepreneur, or experienced individual, we invite you to share your journey and knowledge with students through SLG Solutions.',
+      pillars: [
+        'One conversation can create awareness.',
+        'One experience can provide direction.',
+        'One story can inspire a better future.',
+      ],
+      calloutTitle: 'Join Us for a Better Future',
+      calloutSubtext: 'Share your story. Share your knowledge. Be part of the change.',
+      footerTagline: 'SLG Solutions — Connecting Experience with the Next Generation.',
+    },
+    partOfTheChange: {
+      title: 'Be Part of the Change',
+      guidingPrinciples: [
+        "Your experience can become someone's guidance.",
+        'Your story can inspire a young mind.',
+        'Your knowledge can help shape a better tomorrow.',
+      ],
+      paragraphs: [
+        'SLG Solutions is an open platform created to connect students and young people with experienced professionals, experts, educators, entrepreneurs, and industry leaders.',
+        'Many students have talent and ambition, but they may not have access to the right guidance or real-world exposure. Sometimes, hearing directly from an experienced person can help them understand careers, opportunities, challenges, technology, education, and the changing world from a different perspective.',
+        'That is why we invite you to be part of this initiative. Share your journey, experiences, knowledge, lessons, and valuable insights with the next generation. Your experience may answer a question a student has been searching for, help them explore a new opportunity, or simply give them the confidence to take the next step.',
+      ],
+    },
+  },
   whyJoinHeading: 'Why Join Us?',
   benefits: [
     {

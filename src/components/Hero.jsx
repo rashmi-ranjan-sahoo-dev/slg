@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+import heroStudentsImg from '../assets/images/hero-students.jpg';
 
 export default function Hero({ isLoaded }) {
   const containerRef = useRef(null);
@@ -41,53 +42,54 @@ export default function Hero({ isLoaded }) {
         return;
       }
 
-      const tl = gsap.timeline({ delay: 0.1 });
+      const tl = gsap.timeline({ delay: 0.05 });
 
-      // 1. Headline masked reveal
+      // 1. Photo reveal with scale down (starts immediately so user sees hero image at once)
       tl.fromTo(
-        headlineRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+        imageContainerRef.current,
+        { opacity: 0, scale: 1.04 },
+        { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' },
+        0
       );
 
-      // 2. "Clarity" pops with subtle skew & scale
+      // 2. Headline masked reveal
+      tl.fromTo(
+        headlineRef.current,
+        { y: 35, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
+        0.1
+      );
+
+      // 3. "Clarity" pops with subtle skew & scale
       tl.fromTo(
         clarityRef.current,
         { scale: 0.85, opacity: 0, skewX: -6 },
-        { scale: 1, opacity: 1, skewX: 0, duration: 0.7, ease: 'back.out(1.7)' },
-        '-=0.4'
+        { scale: 1, opacity: 1, skewX: 0, duration: 0.6, ease: 'back.out(1.7)' },
+        '-=0.35'
       );
 
-      // 3. Orange underline draw under clarity
+      // 4. Orange underline draw under clarity
       tl.fromTo(
         underlineRef.current,
         { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.6, ease: 'power2.out' },
+        { scaleX: 1, duration: 0.5, ease: 'power2.out' },
+        '-=0.25'
+      );
+
+      // 5. Subtitle fade up
+      tl.fromTo(
+        subtitleRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
         '-=0.3'
       );
 
-      // 4. Subtitle fade up
-      tl.fromTo(
-        subtitleRef.current,
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
-        '-=0.4'
-      );
-
-      // 5. Short orange bar draws
+      // 6. Short orange bar draws
       tl.fromTo(
         barRef.current,
         { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.5, ease: 'power2.out' },
-        '-=0.3'
-      );
-
-      // 6. Photo reveal with scale down
-      tl.fromTo(
-        imageContainerRef.current,
-        { opacity: 0, scale: 1.08 },
-        { opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out' },
-        '-=0.8'
+        { scaleX: 1, duration: 0.45, ease: 'power2.out' },
+        '-=0.25'
       );
 
       // 7. Floating icons pop in stagger
@@ -97,11 +99,11 @@ export default function Hero({ isLoaded }) {
         {
           scale: 1,
           opacity: 1,
-          stagger: 0.1,
-          duration: 0.5,
+          stagger: 0.08,
+          duration: 0.45,
           ease: 'back.out(2)',
         },
-        '-=0.5'
+        '-=0.3'
       );
 
       // 8. Continuous gentle floating animation for icons
@@ -175,12 +177,13 @@ export default function Hero({ isLoaded }) {
               className="relative w-full h-full min-h-[340px] sm:min-h-[440px] lg:min-h-[560px] xl:min-h-[620px] overflow-hidden hero-image-mask"
             >
               <img
-                src="/src/assets/images/hero-students.jpg"
+                src={heroStudentsImg}
                 alt="Students in classroom listening and learning"
                 width="754"
                 height="566"
                 className="w-full h-full object-cover rounded-none"
                 loading="eager"
+                fetchPriority="high"
               />
 
               {/* Floating White Line-art Doodle Icons */}

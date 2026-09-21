@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import logoWhite from '../assets/logo-white.png';
+import heroStudentsImg from '../assets/images/hero-students.jpg';
 
 export default function Loader({ onComplete }) {
   const containerRef = useRef(null);
@@ -24,7 +25,7 @@ export default function Loader({ onComplete }) {
           await document.fonts.ready;
         }
         const img = new Image();
-        img.src = '/src/assets/images/hero-students.jpg';
+        img.src = heroStudentsImg;
         if (img.decode) {
           await img.decode().catch(() => {});
         }

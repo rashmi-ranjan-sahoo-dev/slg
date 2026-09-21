@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Sparkles, Users, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
@@ -15,6 +15,7 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
   onCloseRef.current = onClose;
 
   const prefersReducedMotion = usePrefersReducedMotion();
+  const [activeSection, setActiveSection] = useState('guide');
 
   const handleClose = (e) => {
     if (e && typeof e.stopPropagation === 'function') {
@@ -63,6 +64,7 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
     }
 
     previousFocusRef.current = document.activeElement;
+    setActiveSection('guide');
 
     // Reset scroll position to top when opened
     if (scrollContainerRef.current) {
@@ -127,9 +129,32 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
   const { guideGeneration, partOfTheChange } = extraContent;
 
   const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const container = scrollContainerRef.current;
+    const target = document.getElementById(id);
+    if (container && target) {
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const scrollOffset = targetRect.top - containerRect.top + container.scrollTop;
+      container.scrollTo({
+        top: Math.max(0, scrollOffset - 12),
+        behavior: 'smooth',
+      });
+      setActiveSection(id === 'modal-section-change' ? 'change' : 'guide');
+    }
+  };
+
+  const handleContainerScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const changeSection = document.getElementById('modal-section-change');
+    if (changeSection) {
+      const containerRect = container.getBoundingClientRect();
+      const changeRect = changeSection.getBoundingClientRect();
+      if (changeRect.top <= containerRect.top + 140) {
+        setActiveSection('change');
+      } else {
+        setActiveSection('guide');
+      }
     }
   };
 
@@ -157,12 +182,16 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
       >
         {/* Sticky Header with Navigation Pills & Close Button */}
         <div className="flex items-center justify-between px-3.5 sm:px-6 py-3 sm:py-3.5 border-b border-slate-100 bg-white/95 backdrop-blur-md flex-shrink-0 z-20">
-          {/* Quick jump navigation pills */}
+          {/* Quick jump navigation pills with active scrollspy indicator */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={() => scrollToSection('modal-section-guide')}
-              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold text-orange-600 bg-orange-50 hover:bg-orange-100 transition-colors select-none"
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold transition-all select-none ${
+                activeSection === 'guide'
+                  ? 'bg-orange-500 text-white shadow-xs ring-2 ring-orange-400/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-orange-600'
+              }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Guide Students</span>
@@ -171,7 +200,11 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
             <button
               type="button"
               onClick={() => scrollToSection('modal-section-change')}
-              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold text-[#1E5BD8] bg-blue-50 hover:bg-blue-100 transition-colors select-none"
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold transition-all select-none ${
+                activeSection === 'change'
+                  ? 'bg-[#1E5BD8] text-white shadow-xs ring-2 ring-blue-400/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-blue-50 hover:text-[#1E5BD8]'
+              }`}
             >
               <Users className="w-3.5 h-3.5" />
               <span>Be Part of the Change</span>
@@ -193,6 +226,7 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
         {/* Scrollable Modal Content: Both sections continuous with original pictures */}
         <div
           ref={scrollContainerRef}
+          onScroll={handleContainerScroll}
           className="p-4 sm:p-7 md:p-9 overflow-y-auto overscroll-contain flex-1 space-y-10 sm:space-y-12"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >

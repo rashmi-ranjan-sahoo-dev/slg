@@ -14,6 +14,7 @@ import heroStudentsImg from '../assets/images/hero-students.jpg';
 
 export default function Hero({ isLoaded }) {
   const containerRef = useRef(null);
+  const verticalsRef = useRef(null);
   const headlineRef = useRef(null);
   const clarityRef = useRef(null);
   const underlineRef = useRef(null);
@@ -31,6 +32,7 @@ export default function Hero({ isLoaded }) {
       if (prefersReducedMotion) {
         gsap.set(
           [
+            verticalsRef.current,
             headlineRef.current,
             clarityRef.current,
             subtitleRef.current,
@@ -52,12 +54,20 @@ export default function Hero({ isLoaded }) {
         0
       );
 
-      // 2. Headline masked reveal
+      // 2. 3 Verticals fade up
+      tl.fromTo(
+        verticalsRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
+        0.05
+      );
+
+      // 3. Headline masked reveal
       tl.fromTo(
         headlineRef.current,
-        { y: 35, opacity: 0 },
+        { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
-        0.1
+        0.15
       );
 
       // 3. "Clarity" pops with subtle skew & scale
@@ -139,6 +149,18 @@ export default function Hero({ isLoaded }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
           {/* Left Column: Typography with generous padding */}
           <div className="lg:col-span-6 z-10 text-left px-6 sm:px-10 lg:pl-16 lg:pr-8 xl:pl-24">
+            {/* 3 Verticals on top of "From Confusion to Clarity" */}
+            <div
+              ref={verticalsRef}
+              className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm md:text-[15px] font-bold text-[#0A1F4D] tracking-[0.18em] uppercase mb-4 sm:mb-6 select-none"
+            >
+              <span>JOB PLACEMENTS</span>
+              <span className="text-slate-300 font-light select-none">|</span>
+              <span>CAREER GROWTH</span>
+              <span className="text-slate-300 font-light select-none">|</span>
+              <span>SUCCESS</span>
+            </div>
+
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[76px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.08]">
               <span ref={headlineRef} className="block">
                 {HERO_CONTENT.titlePrefix}

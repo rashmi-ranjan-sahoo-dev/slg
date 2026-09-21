@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import gsap from 'gsap';
 import Logo from './Logo';
@@ -69,23 +70,31 @@ export default function MobileMenu({ isOpen, onClose, navItems, activeId }) {
     }
   };
 
-  return (
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       ref={overlayRef}
       role="dialog"
       aria-modal="true"
       aria-label="Mobile Navigation Menu"
-      className="fixed inset-0 z-50 bg-[#0B2A5B] opacity-0 pointer-events-none flex flex-col justify-between p-6 sm:p-8 text-white"
+      className="fixed inset-0 z-50 bg-[#0B2A5B] opacity-0 pointer-events-none flex flex-col justify-between p-6 sm:p-8 text-white w-screen h-screen overflow-hidden"
+      style={{ minHeight: '100dvh' }}
     >
       {/* Top bar inside menu */}
       <div className="flex items-center justify-between">
-        <Logo className="h-9 w-auto brightness-0 invert" variant="light" />
+        <Logo className="h-10 sm:h-12 w-auto brightness-0 invert" variant="light" />
         <button
           onClick={onClose}
           aria-label="Close menu"
-          className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all text-white"
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all text-white"
         >
-          <X className="w-6 h-6" />
+          <X className="w-7 h-7" />
         </button>
       </div>
 
@@ -102,10 +111,10 @@ export default function MobileMenu({ isOpen, onClose, navItems, activeId }) {
                 e.preventDefault();
                 handleLinkClick(item.href);
               }}
-              className={`text-2xl sm:text-3xl font-semibold tracking-wide transition-colors py-2 px-6 rounded-full ${
+              className={`text-2xl sm:text-3xl font-bold tracking-wide transition-colors py-2.5 px-8 rounded-full ${
                 isActive
                   ? 'bg-orange-500 text-white shadow-lg'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : 'text-white/85 hover:text-white hover:bg-white/10'
               }`}
             >
               {item.label}
@@ -115,9 +124,10 @@ export default function MobileMenu({ isOpen, onClose, navItems, activeId }) {
       </nav>
 
       {/* Footer text inside menu */}
-      <div className="text-center text-sm text-white/50 pb-4">
+      <div className="text-center text-sm font-medium text-white/60 pb-4">
         SLG Solutions • Practical Learning. Real Opportunities.
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

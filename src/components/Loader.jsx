@@ -148,6 +148,7 @@ export default function Loader({ onComplete }) {
 
         {/* Counter and status */}
         <div className="flex justify-between w-full text-xs font-medium text-white/70 tracking-wider">
+          <span className="uppercase text-[11px] text-white/50">Loading</span>
           <span ref={counterRef} className="font-mono text-orange-400 font-semibold">
             {percent}%
           </span>

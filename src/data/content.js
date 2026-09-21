@@ -3,6 +3,8 @@ import expertInsightsImg from '../assets/images/service-expert-insights.jpg';
 import placementsImg from '../assets/images/service-placements.jpg';
 import mentorImg from '../assets/images/mentor-students.jpg';
 import skylineImg from '../assets/images/skyline-hiker.jpg';
+import guideGenerationImg from '../assets/images/story-guide-generation.png';
+import changeMakersImg from '../assets/images/story-change-makers.png';
 
 export const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
@@ -89,6 +91,8 @@ export const ABOUT_CONTENT = {
     guideGeneration: {
       title: 'Guide the Next Generation',
       subtitle: 'Share Your Story',
+      image: guideGenerationImg,
+      imageAlt: 'Mentor recording video session with laptop and guidance notes',
       paragraph:
         'If you are an expert, professional, educator, entrepreneur, or experienced individual, we invite you to share your journey and knowledge with students through SLG Solutions.',
       pillars: [
@@ -102,6 +106,8 @@ export const ABOUT_CONTENT = {
     },
     partOfTheChange: {
       title: 'Be Part of the Change',
+      image: changeMakersImg,
+      imageAlt: 'Professionals, Educators, Entrepreneurs, Industry Leaders and Experts inspiring students',
       guidingPrinciples: [
         "Your experience can become someone's guidance.",
         'Your story can inspire a young mind.',

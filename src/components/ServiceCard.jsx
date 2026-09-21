@@ -48,12 +48,6 @@ export default function ServiceCard({
     cardRef: localCardRef,
   });
 
-  const handleCardClick = () => {
-    if (isMiddleCard) {
-      onOpenPopup?.(service);
-    }
-  };
-
   const handleButtonClick = (e) => {
     e.stopPropagation();
     if (isMiddleCard) {
@@ -77,11 +71,8 @@ export default function ServiceCard({
   return (
     <div
       ref={setCardRef}
-      onClick={handleCardClick}
       onKeyDown={handleKeyDown}
-      className={`group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full ${
-        isMiddleCard ? 'cursor-pointer' : ''
-      }`}
+      className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
     >
       {/* Top Image taking TOTAL WIDTH of the card */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">

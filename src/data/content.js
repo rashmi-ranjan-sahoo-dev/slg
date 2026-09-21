@@ -24,6 +24,8 @@ export const HERO_CONTENT = {
   subtitle: 'One Platform. Real Experience. Right Guidance.',
 };
 
+export const ALLOW_MULTIPLE_OPEN = false;
+
 export const SERVICES_CONTENT = {
   heading: 'Our Services',
   subheading: 'Practical Learning. Real Opportunities.',
@@ -32,6 +34,8 @@ export const SERVICES_CONTENT = {
       id: 'internships',
       title: 'Internships',
       description: 'Learn through real-world experience.',
+      moreText:
+        "Step into real projects guided by experienced mentors. You'll work with practical tools, solve real problems and build a portfolio that shows employers what you can actually do, not just what you've studied.",
       icon: 'GraduationCap',
       badgeBg: '#F97316',
       image: internshipsImg,
@@ -42,6 +46,8 @@ export const SERVICES_CONTENT = {
       id: 'expert-insights',
       title: 'Expert Insights',
       description: 'Learn directly from industry professionals.',
+      moreText:
+        'Hear directly from professionals who have walked the path before you. Through talks and interactive sessions, they share honest career advice, industry trends and lessons that classrooms rarely cover, so you can choose your direction with clarity.',
       icon: 'Users',
       badgeBg: '#1E5BD8',
       image: expertInsightsImg,
@@ -52,6 +58,8 @@ export const SERVICES_CONTENT = {
       id: 'placements',
       title: 'Placements',
       description: 'Connect talent with career opportunities.',
+      moreText:
+        'We connect skilled students with companies looking for fresh talent. From preparing you for opportunities to bringing you face to face with the right employers, we help turn your skills into a career you can be proud of.',
       icon: 'Briefcase',
       badgeBg: '#16A34A',
       image: placementsImg,

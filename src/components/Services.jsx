@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SERVICES_CONTENT } from '../data/content';
+import { SERVICES_CONTENT, ALLOW_MULTIPLE_OPEN } from '../data/content';
 import ServiceCard from './ServiceCard';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
@@ -17,7 +17,17 @@ export default function Services() {
   const cardsRef = useRef([]);
   const badgesRef = useRef([]);
 
+  const [openCardIds, setOpenCardIds] = useState([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const handleToggleCard = (id) => {
+    setOpenCardIds((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((cardId) => cardId !== id);
+      }
+      return ALLOW_MULTIPLE_OPEN ? [...prev, id] : [id];
+    });
+  };
 
   useGSAP(
     () => {
@@ -132,12 +142,14 @@ export default function Services() {
         </div>
 
         {/* 3 Services Cards Grid - wider and taking total width */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 md:gap-10 items-start w-full">
           {SERVICES_CONTENT.services.map((service, index) => (
             <ServiceCard
               key={service.id}
               service={service}
               index={index}
+              isOpen={openCardIds.includes(service.id)}
+              onToggle={() => handleToggleCard(service.id)}
               cardRef={(el) => (cardsRef.current[index] = el)}
               badgeRef={(el) => (badgesRef.current[index] = el)}
             />

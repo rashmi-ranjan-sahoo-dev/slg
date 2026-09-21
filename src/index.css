@@ -79,3 +79,26 @@
 .card-shadow-hover {
   box-shadow: 0 20px 40px -5px rgba(11, 42, 91, 0.2), 0 8px 16px -2px rgba(11, 42, 91, 0.12);
 }
+
+/* Service Card 'See more' Button Styles */
+.see-more-btn {
+  touch-action: manipulation;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.see-more-arrow-wrap {
+  transition: transform 0.2s ease-out;
+}
+
+@media (hover: hover) {
+  .see-more-btn:hover {
+    color: #EA580C; /* orange-600 */
+  }
+  .see-more-btn:hover .see-more-arrow-wrap {
+    transform: translateX(4px);
+  }
+}
+
+.see-more-btn:active {
+  transform: scale(0.97);
+}

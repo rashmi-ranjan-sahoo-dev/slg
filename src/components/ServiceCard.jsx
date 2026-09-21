@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { GraduationCap, Users, Briefcase, ArrowRight } from 'lucide-react';
+import { useExpandableCard } from '../hooks/useExpandableCard';
 
 const ICON_MAP = {
   GraduationCap: GraduationCap,
@@ -10,15 +11,52 @@ const ICON_MAP = {
 export default function ServiceCard({
   service,
   index,
+  isOpen = false,
+  onToggle,
   cardRef,
   badgeRef,
 }) {
+  const localCardRef = useRef(null);
+  const panelRef = useRef(null);
+  const contentRef = useRef(null);
+  const arrowRef = useRef(null);
+  const buttonRef = useRef(null);
+
   const IconComponent = ICON_MAP[service.icon] || GraduationCap;
+  const titleId = `service-title-${service.id}`;
+  const panelId = `service-panel-${service.id}`;
+  const buttonId = `service-btn-${service.id}`;
+
+  const setCardRef = (el) => {
+    localCardRef.current = el;
+    if (typeof cardRef === 'function') {
+      cardRef(el);
+    } else if (cardRef) {
+      cardRef.current = el;
+    }
+  };
+
+  useExpandableCard({
+    isOpen,
+    panelRef,
+    contentRef,
+    arrowRef,
+    cardRef: localCardRef,
+  });
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      e.stopPropagation();
+      onToggle?.();
+      buttonRef.current?.focus();
+    }
+  };
 
   return (
     <div
-      ref={cardRef}
-      className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center cursor-pointer active:scale-[0.98] w-full"
+      ref={setCardRef}
+      onKeyDown={handleKeyDown}
+      className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
     >
       {/* Top Image taking TOTAL WIDTH of the card */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -42,18 +80,74 @@ export default function ServiceCard({
         <IconComponent className="w-10 h-10 sm:w-11 sm:h-11 stroke-[2.2]" />
       </div>
 
-      {/* Body Content with larger font size */}
+      {/* Body Content */}
       <div className="p-6 sm:p-8 pt-4 flex flex-col items-center flex-grow w-full">
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0A1F4D] tracking-tight mb-3">
+        <h3
+          id={titleId}
+          className="text-2xl sm:text-3xl font-extrabold text-[#0A1F4D] tracking-tight mb-3"
+        >
           {service.title}
         </h3>
-        <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal">
+
+        <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[52px] sm:min-h-[56px] flex items-center justify-center">
           {service.description}
         </p>
 
-        {/* Bottom Orange Arrow */}
-        <div className="mt-6 text-orange-500 transition-transform duration-300 group-hover:translate-x-2 flex items-center justify-center w-9 h-9">
-          <ArrowRight className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.8]" />
+        {/* Trigger Button replacing bare arrow */}
+        <button
+          type="button"
+          id={buttonId}
+          ref={buttonRef}
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          className="see-more-btn mt-6 inline-flex items-center justify-center gap-2 min-h-[44px] px-3 py-2 text-[14px] font-semibold text-orange-500 font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
+        >
+          <span className="relative inline-grid items-center justify-center">
+            <span
+              className={`col-start-1 row-start-1 transition-opacity duration-300 ${
+                isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
+            >
+              See more
+            </span>
+            <span
+              className={`col-start-1 row-start-1 transition-opacity duration-300 ${
+                isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              See less
+            </span>
+          </span>
+
+          <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5">
+            <ArrowRight
+              ref={arrowRef}
+              className="w-5 h-5 stroke-[2.8] origin-center"
+            />
+          </span>
+        </button>
+
+        {/* Collapsible Panel Opens Below Button */}
+        <div
+          id={panelId}
+          ref={panelRef}
+          role="region"
+          aria-labelledby={titleId}
+          aria-hidden={!isOpen}
+          inert={!isOpen}
+          className="w-full overflow-hidden"
+          style={{ height: 0, visibility: 'hidden' }}
+        >
+          <div ref={contentRef} className="pt-4 flex flex-col items-center px-1">
+            {/* Thin short orange divider line (about 40px wide) with ~16px spacing */}
+            <div className="w-10 h-[2px] bg-orange-500 rounded-full mb-4" />
+
+            {/* Expanded Copy */}
+            <p className="text-[13px] md:text-[14px] font-normal font-['Poppins'] text-slate-500 text-center leading-[1.65] max-w-[340px]">
+              {service.moreText}
+            </p>
+          </div>
         </div>
       </div>
     </div>

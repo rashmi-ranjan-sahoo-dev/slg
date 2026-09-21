@@ -198,28 +198,6 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             {service.moreText}
           </p>
 
-          {/* Key Highlights list */}
-          <div className="w-full mt-4 sm:mt-5 bg-slate-50 rounded-xl p-3.5 sm:p-4 text-left border border-slate-100 flex flex-col gap-2 sm:gap-2.5">
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span className="text-xs sm:text-sm text-slate-700 font-medium">
-                Live interactive Q&A sessions with seasoned industry leaders
-              </span>
-            </div>
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span className="text-xs sm:text-sm text-slate-700 font-medium">
-                Honest career roadmaps and real-world workplace insights
-              </span>
-            </div>
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-              <span className="text-xs sm:text-sm text-slate-700 font-medium">
-                Unfiltered trends and guidance not found in academic courses
-              </span>
-            </div>
-          </div>
-
           {/* Close Action Button */}
           <button
             type="button"

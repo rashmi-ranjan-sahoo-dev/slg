@@ -26,6 +26,12 @@ export const HERO_CONTENT = {
 
 export const ALLOW_MULTIPLE_OPEN = false;
 
+export const YOUTUBE_LINKS = {
+  internships: 'https://www.youtube.com/results?search_query=internship+skills+practical+learning',
+  expertInsights: 'https://www.youtube.com/results?search_query=industry+expert+career+guidance',
+  placements: 'https://www.youtube.com/results?search_query=campus+placement+interview+preparation',
+};
+
 export const SERVICES_CONTENT = {
   heading: 'Our Services',
   subheading: 'Practical Learning. Real Opportunities.',
@@ -41,6 +47,7 @@ export const SERVICES_CONTENT = {
       image: internshipsImg,
       alt: 'Student working on laptop during real-world internship',
       link: LINKS.internships,
+      youtubeUrl: YOUTUBE_LINKS.internships,
     },
     {
       id: 'expert-insights',
@@ -53,6 +60,7 @@ export const SERVICES_CONTENT = {
       image: expertInsightsImg,
       alt: 'Industry professional giving a presentation and keynote',
       link: LINKS.expertInsights,
+      youtubeUrl: YOUTUBE_LINKS.expertInsights,
     },
     {
       id: 'placements',
@@ -65,6 +73,7 @@ export const SERVICES_CONTENT = {
       image: placementsImg,
       alt: 'Professionals shaking hands and discussing job placement',
       link: LINKS.placements,
+      youtubeUrl: YOUTUBE_LINKS.placements,
     },
   ],
 };

@@ -24,6 +24,58 @@ export const HERO_CONTENT = {
   titlePrefix: 'From Confusion to',
   titleHighlight: 'Clarity',
   subtitle: 'One Platform. Real Experience. Right Guidance.',
+  popupContent: {
+    badge: 'About SLG Solutions',
+    title: 'From Confusion to Clarity',
+    tagline: 'One Platform. Real Experience. Right Guidance.',
+    intro:
+      'SLG Solutions bridges the gap between academic learning and real-world success. We connect students with experienced professionals, industry leaders, and practical opportunities — so they can make confident career decisions backed by clarity, not confusion.',
+    sections: [
+      {
+        heading: 'What We Offer',
+        items: [
+          {
+            label: 'Internships',
+            text: 'Step into real projects guided by experienced mentors. Build a portfolio that shows employers what you can actually do.',
+            color: '#F97316',
+          },
+          {
+            label: 'Expert Insights',
+            text: 'Hear directly from professionals who have walked the path. Honest career advice, industry trends, and lessons classrooms rarely cover.',
+            color: '#1E5BD8',
+          },
+          {
+            label: 'Placements',
+            text: 'We connect skilled students with companies looking for fresh talent and help turn your skills into a career you can be proud of.',
+            color: '#16A34A',
+          },
+        ],
+      },
+      {
+        heading: 'Why SLG Solutions?',
+        items: [
+          {
+            label: 'Real-World Experience',
+            text: 'Practical exposure through hands-on projects and live industry interaction — not just textbook theory.',
+            color: '#7C3AED',
+          },
+          {
+            label: 'Expert Guidance',
+            text: 'Direct access to professionals, educators, and entrepreneurs who share their honest journeys and actionable insights.',
+            color: '#0D9488',
+          },
+          {
+            label: 'Career Opportunities',
+            text: 'From internship placements to job connections, we help you take the next step with confidence and clarity.',
+            color: '#EA580C',
+          },
+        ],
+      },
+    ],
+    closingMessage:
+      'Whether you are a student looking for direction or an experienced professional wanting to give back — SLG Solutions is the platform where real stories create real impact.',
+    footerTagline: 'SLG Solutions — Connecting Experience with the Next Generation.',
+  },
 };
 
 export const ALLOW_MULTIPLE_OPEN = false;

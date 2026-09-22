@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import {
@@ -7,10 +7,12 @@ import {
   GraduationCap,
   Settings,
   Briefcase,
+  ArrowRight,
 } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import heroStudentsImg from '../assets/images/hero-students.jpg';
+import HeroModal from './HeroModal';
 
 export default function Hero({ isLoaded }) {
   const containerRef = useRef(null);
@@ -20,9 +22,11 @@ export default function Hero({ isLoaded }) {
   const underlineRef = useRef(null);
   const subtitleRef = useRef(null);
   const barRef = useRef(null);
+  const seeMoreRef = useRef(null);
   const imageContainerRef = useRef(null);
   const floatingIconsRef = useRef([]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useGSAP(
@@ -37,6 +41,7 @@ export default function Hero({ isLoaded }) {
             clarityRef.current,
             subtitleRef.current,
             barRef.current,
+            seeMoreRef.current,
             imageContainerRef.current,
           ],
           { opacity: 1, y: 0, scale: 1 }
@@ -100,6 +105,14 @@ export default function Hero({ isLoaded }) {
         { scaleX: 0, transformOrigin: 'left center' },
         { scaleX: 1, duration: 0.45, ease: 'power2.out' },
         '-=0.25'
+      );
+
+      // 6b. See more button fade up
+      tl.fromTo(
+        seeMoreRef.current,
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' },
+        '-=0.2'
       );
 
       // 7. Floating icons pop in stagger
@@ -190,6 +203,25 @@ export default function Hero({ isLoaded }) {
               ref={barRef}
               className="mt-5 sm:mt-7 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
             />
+
+            {/* See more button */}
+            <button
+              type="button"
+              ref={seeMoreRef}
+              id="hero-see-more-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsModalOpen(true);
+              }}
+              aria-haspopup="dialog"
+              aria-expanded={isModalOpen}
+              className="see-more-btn mt-6 sm:mt-7 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[48px] px-4 sm:px-5 py-2.5 sm:py-3 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-sm hover:shadow-md"
+            >
+              <span>See more</span>
+              <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8] origin-center" />
+              </span>
+            </button>
           </div>
 
           {/* Right Column: Hero Classroom Image taking TOTAL WIDTH of right half */}
@@ -252,6 +284,13 @@ export default function Hero({ isLoaded }) {
           </div>
         </div>
       </div>
+
+      {/* Hero Popup Modal */}
+      <HeroModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        content={HERO_CONTENT.popupContent}
+      />
     </section>
   );
 }

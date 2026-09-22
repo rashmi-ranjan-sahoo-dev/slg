@@ -34,15 +34,15 @@ export default function Header({ activeId }) {
       id="site-header"
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-3'
-          : 'bg-transparent py-4 md:py-6'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2.5 sm:py-3'
+          : 'bg-transparent py-2.5 sm:py-4 md:py-6'
       }`}
     >
       <div className="w-full px-4 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between relative min-h-[64px] sm:min-h-[72px]">
+        <div className="flex items-center justify-between relative min-h-[56px] sm:min-h-[72px]">
           {/* Logo on Left */}
           <div className="flex-shrink-0 z-10">
-            <Logo className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto" />
+            <Logo className="h-12 sm:h-16 md:h-18 lg:h-20 w-auto" />
           </div>
 
           {/* Desktop Navigation Centered in the Middle of Header */}
@@ -70,15 +70,15 @@ export default function Header({ activeId }) {
             })}
           </nav>
 
-          {/* Mobile Hamburger Toggle on Right */}
+          {/* Mobile Hamburger Toggle on Right (Reduced size for phone screen) */}
           <div className="md:hidden z-10">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open Navigation Menu"
               aria-expanded={isMobileMenuOpen}
-              className="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-100 text-[#0B2A5B] hover:bg-slate-200 active:scale-95 transition-all"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 text-[#0B2A5B] hover:bg-slate-200 active:scale-95 transition-all shadow-xs"
             >
-              <Menu className="w-7 h-7" />
+              <Menu className="w-5 h-5 stroke-[2.2]" />
             </button>
           </div>
         </div>

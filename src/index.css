@@ -136,3 +136,25 @@
 .animate-slg-ticker:hover {
   animation-play-state: paused;
 }
+
+/* Hero Section Mobile Verticals Marquee (Left to Right infinite one-line scroll) */
+@keyframes heroMarqueeLTR {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-hero-marquee-ltr {
+  animation: heroMarqueeLTR 18s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-marquee-ltr {
+    animation: none;
+    transform: translateX(0);
+  }
+}

@@ -152,7 +152,7 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-18 pb-6 sm:pt-20 md:pt-22 lg:pt-20 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative pt-28 pb-8 sm:pt-28 md:pt-26 lg:pt-22 overflow-hidden min-h-[90vh] flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}
@@ -163,15 +163,58 @@ export default function Hero({ isLoaded }) {
           {/* Left Column: Typography with generous padding */}
           <div className="lg:col-span-6 z-10 text-left px-6 sm:px-10 lg:pl-16 lg:pr-8 xl:pl-24">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
-            <div
-              ref={verticalsRef}
-              className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm md:text-[15px] font-bold text-[#0A1F4D] tracking-[0.18em] uppercase mb-4 sm:mb-6 select-none"
-            >
-              <span>JOB PLACEMENTS</span>
-              <span className="text-slate-300 font-light select-none">|</span>
-              <span>CAREER GROWTH</span>
-              <span className="text-slate-300 font-light select-none">|</span>
-              <span>SUCCESS</span>
+            <div ref={verticalsRef} className="w-full mb-4 sm:mb-6 select-none mt-1 sm:mt-0">
+              {/* Desktop: clean static line */}
+              <div className="hidden md:flex items-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm md:text-[15px] font-bold text-[#0A1F4D] tracking-[0.18em] uppercase">
+                <span>JOB PLACEMENTS</span>
+                <span className="text-slate-300 font-light select-none">|</span>
+                <span>CAREER GROWTH</span>
+                <span className="text-slate-300 font-light select-none">|</span>
+                <span>SUCCESS</span>
+              </div>
+
+              {/* Mobile phone screen: smooth infinite single-line marquee scrolling left to right */}
+              <div
+                className="md:hidden w-full overflow-hidden relative"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                }}
+              >
+                <div className="flex w-max animate-hero-marquee-ltr py-0.5">
+                  {/* Group 1 (50% of track) */}
+                  <div className="flex items-center gap-3 text-xs font-bold text-[#0A1F4D] tracking-[0.16em] uppercase whitespace-nowrap pr-3 flex-shrink-0">
+                    <span>JOB PLACEMENTS</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>CAREER GROWTH</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>SUCCESS</span>
+                    <span className="text-orange-500 font-black px-1.5">•</span>
+                    <span>JOB PLACEMENTS</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>CAREER GROWTH</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>SUCCESS</span>
+                    <span className="text-orange-500 font-black px-1.5">•</span>
+                  </div>
+
+                  {/* Group 2 (50% of track, exact duplicate for seamless infinite loop) */}
+                  <div className="flex items-center gap-3 text-xs font-bold text-[#0A1F4D] tracking-[0.16em] uppercase whitespace-nowrap pr-3 flex-shrink-0" aria-hidden="true">
+                    <span>JOB PLACEMENTS</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>CAREER GROWTH</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>SUCCESS</span>
+                    <span className="text-orange-500 font-black px-1.5">•</span>
+                    <span>JOB PLACEMENTS</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>CAREER GROWTH</span>
+                    <span className="text-slate-300 font-light">|</span>
+                    <span>SUCCESS</span>
+                    <span className="text-orange-500 font-black px-1.5">•</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[76px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.08]">

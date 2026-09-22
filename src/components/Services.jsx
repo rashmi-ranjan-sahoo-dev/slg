@@ -113,11 +113,11 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-14 sm:py-16 md:py-20 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 bg-[#0B2A5B] text-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header with enlarged typography */}
-        <div className="text-center mb-14 sm:mb-18">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center justify-center gap-4 sm:gap-6">
             <span
               ref={leftLineRef}
@@ -137,7 +137,7 @@ export default function Services() {
 
           <p
             ref={subheadRef}
-            className="mt-4 text-base sm:text-xl md:text-2xl font-medium text-slate-200 tracking-wide"
+            className="mt-2.5 sm:mt-3 text-base sm:text-xl md:text-2xl font-medium text-slate-200 tracking-wide"
           >
             {SERVICES_CONTENT.subheading}
           </p>

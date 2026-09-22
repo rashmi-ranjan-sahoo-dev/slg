@@ -152,7 +152,7 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-22 pb-8 sm:pt-26 md:pt-28 lg:pt-24 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative pt-18 pb-6 sm:pt-20 md:pt-22 lg:pt-20 overflow-hidden min-h-[90vh] flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}
@@ -194,14 +194,14 @@ export default function Hero({ isLoaded }) {
 
             <p
               ref={subtitleRef}
-              className="mt-7 sm:mt-9 text-lg sm:text-xl md:text-2xl lg:text-[26px] font-semibold text-slate-800 max-w-xl leading-snug"
+              className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl lg:text-[26px] font-semibold text-slate-800 max-w-xl leading-snug"
             >
               {HERO_CONTENT.subtitle}
             </p>
 
             <div
               ref={barRef}
-              className="mt-5 sm:mt-7 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+              className="mt-3 sm:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
             />
 
             {/* See more button */}
@@ -215,7 +215,7 @@ export default function Hero({ isLoaded }) {
               }}
               aria-haspopup="dialog"
               aria-expanded={isModalOpen}
-              className="see-more-btn mt-6 sm:mt-7 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[48px] px-4 sm:px-5 py-2.5 sm:py-3 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-sm hover:shadow-md"
+              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[48px] px-4 sm:px-5 py-2.5 sm:py-3 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-sm hover:shadow-md"
             >
               <span>See more</span>
               <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">

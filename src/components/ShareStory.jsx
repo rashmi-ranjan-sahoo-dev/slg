@@ -151,7 +151,7 @@ export default function ShareStory() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-14 sm:py-16 md:py-20 bg-white overflow-hidden w-full"
+      className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 bg-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
@@ -167,12 +167,12 @@ export default function ShareStory() {
 
             <div
               ref={barRef}
-              className="mt-5 sm:mt-6 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+              className="mt-3 sm:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
             />
 
             <p
               ref={paragraphRef}
-              className="mt-7 sm:mt-8 text-lg sm:text-xl md:text-2xl text-slate-600 leading-relaxed max-w-lg font-normal"
+              className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl text-slate-600 leading-relaxed max-w-lg font-normal"
             >
               {ABOUT_CONTENT.paragraph}
             </p>
@@ -180,7 +180,7 @@ export default function ShareStory() {
             {/* Actions Row: YouTube link on Left, See more popup button on Right */}
             <div
               ref={actionsRef}
-              className="mt-6 sm:mt-7 w-full max-w-lg flex items-center justify-between gap-3 pt-3 sm:pt-4 pb-1 border-t border-slate-100"
+              className="mt-4 sm:mt-5 w-full max-w-lg flex items-center justify-between gap-3 pt-2 sm:pt-3 pb-1 border-t border-slate-100"
             >
               {/* YouTube Link on Left */}
               <a
@@ -221,7 +221,7 @@ export default function ShareStory() {
             <a
               ref={buttonRef}
               href={ABOUT_CONTENT.buttonLink}
-              className="mt-7 sm:mt-8 inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base md:text-lg tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
+              className="mt-4 sm:mt-5 inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base md:text-lg tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
             >
               <span>{ABOUT_CONTENT.buttonText}</span>
               <ArrowRight className="w-5 h-5 stroke-[2.8]" />
@@ -241,7 +241,7 @@ export default function ShareStory() {
           <div className="lg:col-span-6 w-full">
             <h3
               ref={whyHeadingRef}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1F4D] tracking-tight mb-8 text-left"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1F4D] tracking-tight mb-5 sm:mb-6 text-left"
             >
               {ABOUT_CONTENT.whyJoinHeading}
             </h3>
@@ -261,7 +261,7 @@ export default function ShareStory() {
               </div>
 
               {/* Script Text + Mentor Photo - taking full right width */}
-              <div className="sm:col-span-5 flex flex-col items-center sm:items-end mt-6 sm:mt-0 w-full">
+              <div className="sm:col-span-5 flex flex-col items-center sm:items-end mt-4 sm:mt-0 w-full">
                 {/* Script handwritten text */}
                 <div
                   ref={scriptTextRef}

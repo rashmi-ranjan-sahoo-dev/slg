@@ -110,7 +110,7 @@ export const SERVICES_CONTENT = {
       description: 'Learn directly from industry professionals.',
       moreText:
         'Hear directly from professionals who have walked the path before you. Through talks and interactive sessions, they share honest career advice, industry trends and lessons that classrooms rarely cover, so you can choose your direction with clarity.',
-      icon: 'Users',
+      icon: 'Presentation',
       badgeBg: '#1E5BD8',
       image: expertInsightsImg,
       alt: 'Industry professional giving a presentation and keynote',
@@ -123,7 +123,7 @@ export const SERVICES_CONTENT = {
       description: 'Connect talent with career opportunities.',
       moreText:
         'We connect skilled students with companies looking for fresh talent. From preparing you for opportunities to bringing you face to face with the right employers, we help turn your skills into a career you can be proud of.',
-      icon: 'Briefcase',
+      icon: 'BriefcaseBusiness',
       badgeBg: '#16A34A',
       image: placementsImg,
       alt: 'Professionals shaking hands and discussing job placement',

@@ -1,11 +1,20 @@
 import React, { useRef } from 'react';
-import { GraduationCap, Users, Briefcase, ArrowRight } from 'lucide-react';
+import {
+  GraduationCap,
+  Users,
+  Briefcase,
+  BriefcaseBusiness,
+  Presentation,
+  ArrowRight,
+} from 'lucide-react';
 import { useExpandableCard } from '../hooks/useExpandableCard';
 
 const ICON_MAP = {
   GraduationCap: GraduationCap,
   Users: Users,
+  Presentation: Presentation,
   Briefcase: Briefcase,
+  BriefcaseBusiness: BriefcaseBusiness,
 };
 
 export default function ServiceCard({

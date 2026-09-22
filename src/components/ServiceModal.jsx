@@ -1,8 +1,24 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Users, CheckCircle2 } from 'lucide-react';
+import {
+  X,
+  Users,
+  Presentation,
+  BriefcaseBusiness,
+  GraduationCap,
+  Briefcase,
+  CheckCircle2,
+} from 'lucide-react';
 import gsap from 'gsap';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+
+const ICON_MAP = {
+  GraduationCap,
+  Users,
+  Presentation,
+  Briefcase,
+  BriefcaseBusiness,
+};
 
 export default function ServiceModal({ service, isOpen, onClose }) {
   const backdropRef = useRef(null);
@@ -119,6 +135,8 @@ export default function ServiceModal({ service, isOpen, onClose }) {
 
   if (!isOpen || !service) return null;
 
+  const IconComponent = ICON_MAP[service.icon] || Presentation;
+
   const modalContent = (
     <div
       id="service-popup-modal"
@@ -142,11 +160,11 @@ export default function ServiceModal({ service, isOpen, onClose }) {
         className="relative w-full max-w-lg max-h-[90vh] bg-white rounded-[20px] shadow-2xl overflow-hidden z-10 my-auto border border-slate-100 flex flex-col will-change-transform"
       >
         {/* Top Header Image: slightly more compact on mobile to maximize copy space */}
-        <div className="relative w-full h-36 sm:h-48 md:h-52 overflow-hidden bg-slate-100 flex-shrink-0">
+        <div className="relative w-full h-36 sm:h-48 flex-shrink-0 bg-slate-900 overflow-hidden">
           <img
             src={service.image}
             alt={service.alt}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
@@ -167,7 +185,7 @@ export default function ServiceModal({ service, isOpen, onClose }) {
           className="-mt-8 sm:-mt-10 relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto flex items-center justify-center text-white shadow-lg border-[3px] sm:border-[4px] border-white flex-shrink-0"
           style={{ backgroundColor: service.badgeBg }}
         >
-          <Users className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.2]" />
+          <IconComponent className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.2]" />
         </div>
 
         {/* Modal Body Content: scrollable if on small phone screens */}

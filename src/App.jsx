@@ -8,7 +8,10 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import ShareStory from './components/ShareStory';
+import Testimonials from './components/Testimonials';
 import ClosingBanner from './components/ClosingBanner';
+import ContactUs from './components/ContactUs';
+import Footer from './components/Footer';
 import { useScrollSpy } from './hooks/useScrollSpy';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -16,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 export default function App() {
   const isSkipLoader = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('skipLoader') === 'true';
   const [isLoaded, setIsLoaded] = useState(isSkipLoader);
-  const activeId = useScrollSpy(['home', 'services', 'about', 'contact'], 120);
+  const activeId = useScrollSpy(['home', 'services', 'about', 'testimonials', 'contact'], 120);
 
   const handleLoaderComplete = () => {
     setIsLoaded(true);
@@ -38,8 +41,13 @@ export default function App() {
         <Hero isLoaded={isLoaded} />
         <Services />
         <ShareStory />
+        <Testimonials />
         <ClosingBanner />
+        <ContactUs />
       </main>
+
+      {/* Global Site Footer */}
+      <Footer />
     </div>
   );
 }

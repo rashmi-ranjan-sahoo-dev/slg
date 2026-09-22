@@ -118,3 +118,21 @@
 .youtube-card-btn:active {
   transform: scale(0.97);
 }
+
+/* Testimonials Smooth Marquee Ticker */
+@keyframes slgTicker {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-slg-ticker {
+  animation: slgTicker 28s linear infinite;
+}
+
+.animate-slg-ticker:hover {
+  animation-play-state: paused;
+}

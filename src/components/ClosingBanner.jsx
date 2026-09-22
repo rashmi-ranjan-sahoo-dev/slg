@@ -78,7 +78,7 @@ export default function ClosingBanner() {
 
   return (
     <section
-      id="contact"
+      id="closing-banner"
       ref={bannerRef}
       className="relative min-h-[260px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[360px] overflow-hidden flex items-center bg-[#0B2A5B] w-full"
     >

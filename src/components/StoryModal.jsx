@@ -274,9 +274,6 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
                     <p className="text-xs sm:text-sm text-slate-700 mt-1 font-medium">
                       {guideGeneration.calloutSubtext}
                     </p>
-                    <p className="text-[11px] sm:text-xs text-slate-500 mt-1.5 font-normal italic">
-                      {guideGeneration.footerTagline}
-                    </p>
                   </div>
                 </div>
 
@@ -340,10 +337,25 @@ export default function StoryModal({ isOpen, onClose, extraContent }) {
                   </div>
 
                   {/* Narrative Paragraphs */}
-                  <div className="mt-4 space-y-3 pt-3.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    {partOfTheChange.paragraphs.map((paragraph, idx) => (
-                      <p key={idx}>{paragraph}</p>
-                    ))}
+                  <div className="mt-4 space-y-3.5 pt-3.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {partOfTheChange.paragraphs.map((paragraph, idx) => {
+                      if (paragraph === 'That is why we invite you to be part of this initiative.') {
+                        return (
+                          <div
+                            key={idx}
+                            className="p-3 sm:p-3.5 rounded-xl bg-blue-50 border border-blue-200/80 text-[#0A1F4D] font-bold text-xs sm:text-sm flex items-center gap-2.5 shadow-2xs"
+                          >
+                            <Sparkles className="w-4 h-4 text-[#1E5BD8] flex-shrink-0" />
+                            <span>{paragraph}</span>
+                          </div>
+                        );
+                      }
+                      return (
+                        <p key={idx} className="leading-relaxed">
+                          {paragraph}
+                        </p>
+                      );
+                    })}
                   </div>
                 </div>
 

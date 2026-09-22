@@ -124,7 +124,7 @@ export const SERVICES_CONTENT = {
 
 export const ABOUT_CONTENT = {
   heading: 'Share Your Story. Guide the Next Generation.',
-  paragraph: 'Your experience can help students understand careers, opportunities and real-world challenges.',
+  paragraph: 'If you are an expert, professional, educator, entrepreneur, or experienced individual, we invite you to share your journey and knowledge with students through SLG Solutions.',
   buttonText: 'JOIN THE INITIATIVE',
   buttonLink: LINKS.joinInitiative,
   youtubeUrl: YOUTUBE_LINKS.shareStory,
@@ -143,21 +143,21 @@ export const ABOUT_CONTENT = {
       ],
       calloutTitle: 'Join Us for a Better Future',
       calloutSubtext: 'Share your story. Share your knowledge. Be part of the change.',
-      footerTagline: 'SLG Solutions — Connecting Experience with the Next Generation.',
     },
     partOfTheChange: {
       title: 'Be Part of the Change',
       image: changeMakersImg,
       imageAlt: 'Professionals, Educators, Entrepreneurs, Industry Leaders and Experts inspiring students',
       guidingPrinciples: [
-        "Your experience can become someone's guidance.",
+        'Your experience can become someone’s guidance.',
         'Your story can inspire a young mind.',
         'Your knowledge can help shape a better tomorrow.',
       ],
       paragraphs: [
         'SLG Solutions is an open platform created to connect students and young people with experienced professionals, experts, educators, entrepreneurs, and industry leaders.',
         'Many students have talent and ambition, but they may not have access to the right guidance or real-world exposure. Sometimes, hearing directly from an experienced person can help them understand careers, opportunities, challenges, technology, education, and the changing world from a different perspective.',
-        'That is why we invite you to be part of this initiative. Share your journey, experiences, knowledge, lessons, and valuable insights with the next generation. Your experience may answer a question a student has been searching for, help them explore a new opportunity, or simply give them the confidence to take the next step.',
+        'That is why we invite you to be part of this initiative.',
+        'Share your journey, experiences, knowledge, lessons, and valuable insights with the next generation. Your experience may answer a question a student has been searching for, help them explore a new opportunity, or simply give them the confidence to take the next step.',
       ],
     },
   },

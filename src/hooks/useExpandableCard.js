@@ -4,6 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 
+// When the card opens → smoothly expand it, show the content, rotate the arrow, and adjust scrolling.
+// When the card closes → smoothly collapse it, hide the content, and rotate the arrow back.
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 let refreshTimer = null;

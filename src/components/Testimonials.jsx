@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Star, Quote, Sparkles, CheckCircle2, TrendingUp } from 'lucide-react';
+import {
+  Star,
+  Quote,
+  Sparkles,
+  TrendingUp,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -15,15 +22,27 @@ export default function Testimonials() {
   const headingRef = useRef(null);
   const subheadRef = useRef(null);
   const spotlightRef = useRef(null);
+  const spotlightInnerRef = useRef(null);
   const tickerContainerRef = useRef(null);
-
-  const [isPaused, setIsPaused] = useState(false);
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   const { badge, heading, subheading, spotlight, tickerReviews } = TESTIMONIALS_CONTENT;
 
-  // Duplicate the reviews array to ensure seamless infinite loop
-  const duplicatedReviews = [...tickerReviews, ...tickerReviews];
+  // Active full card state - defaults to the spotlight story
+  const [activeItem, setActiveItem] = useState(spotlight);
+  const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Combine spotlight and ticker items so all reviews are in ticker and selectable
+  const allReviews = [
+    {
+      id: 'spotlight-default',
+      ...spotlight,
+    },
+    ...tickerReviews,
+  ];
+
+  // Duplicate the array for seamless infinite vertical marquee
+  const duplicatedReviews = [...allReviews, ...allReviews];
 
   useGSAP(
     () => {
@@ -35,7 +54,7 @@ export default function Testimonials() {
         return;
       }
 
-      // Heading timeline
+      // Initial ScrollTrigger entrance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -71,6 +90,43 @@ export default function Testimonials() {
     { scope: sectionRef, dependencies: [prefersReducedMotion] }
   );
 
+  // Handle clicking a card in the marquee to update the full feedback card
+  const handleSelectReview = (review) => {
+    if (activeItem.name === review.name) return;
+
+    if (prefersReducedMotion) {
+      setActiveItem(review);
+      return;
+    }
+
+    const container = spotlightInnerRef.current;
+    if (container) {
+      // Smooth GSAP crossfade & subtle vertical shift
+      gsap.to(container, {
+        opacity: 0,
+        y: -8,
+        scale: 0.98,
+        duration: 0.16,
+        ease: 'power2.in',
+        onComplete: () => {
+          setActiveItem(review);
+          gsap.fromTo(
+            container,
+            { opacity: 0, y: 10, scale: 0.98 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.28, ease: 'power2.out' }
+          );
+        },
+      });
+    } else {
+      setActiveItem(review);
+    }
+
+    // On phone / tablet viewports, smoothly scroll the full card into view
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      spotlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  };
+
   return (
     <section
       id="testimonials"
@@ -105,80 +161,83 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 2-Column Responsive Layout: Left Spotlight + Right Infinite Review Ticker */}
+        {/* 2-Column Responsive Layout: Left Full Feedback Card + Right Infinite Review Ticker */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
-          {/* LEFT COLUMN: Featured Transformation Spotlight Card */}
+          {/* LEFT COLUMN: Full Feedback Spotlight Card */}
           <div className="lg:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
-              className="relative bg-white/10 backdrop-blur-md rounded-[20px] p-6 sm:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden"
+              className="relative bg-white/10 backdrop-blur-md rounded-[20px] p-6 sm:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-[380px] sm:min-h-[420px]"
             >
-              {/* Background Glow Accent */}
+              {/* Background Ambient Glow Accents */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-[#1E5BD8]/25 rounded-full blur-3xl pointer-events-none" />
 
-              <div>
-                {/* Top Badge & Rating Row */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-[13px] font-bold bg-orange-500/20 text-orange-400 border border-orange-400/30 uppercase tracking-wider">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{spotlight.tag}</span>
-                  </span>
-
-                  <div className="flex items-center gap-1" aria-label="5 out of 5 stars">
-                    {[...Array(spotlight.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-orange-400 text-orange-400"
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Quote with Icon */}
-                <div className="relative mb-6">
-                  <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-orange-400/40 mb-2 rotate-180" />
-                  <p className="text-base sm:text-lg md:text-[19px] text-white font-medium leading-relaxed italic">
-                    "{spotlight.quote}"
-                  </p>
-                </div>
-              </div>
-
-              {/* Student Details & Metrics */}
-              <div className="pt-5 border-t border-white/15">
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                      {spotlight.name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-orange-400 font-semibold">
-                      {spotlight.role}
-                    </p>
-                    <p className="text-xs sm:text-sm text-slate-300">
-                      {spotlight.college}
-                    </p>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-orange-500 to-[#1E5BD8] flex items-center justify-center text-white font-black text-lg shadow-md flex-shrink-0">
-                    {spotlight.name.charAt(0)}
-                  </div>
-                </div>
-
-                {/* 3 Metrics Callouts */}
-                <div className="grid grid-cols-3 gap-2 sm:gap-3 text-center">
-                  {spotlight.metrics.map((metric, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-white/10 rounded-xl p-2.5 sm:p-3 border border-white/10"
+              {/* Animated Inner Content Container */}
+              <div ref={spotlightInnerRef} className="flex flex-col justify-between h-full will-change-transform">
+                <div>
+                  {/* Top Badge & Rating Row */}
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <span
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-[13px] font-bold border uppercase tracking-wider transition-colors duration-200"
+                      style={{
+                        backgroundColor: `${activeItem.tagColor || '#16A34A'}25`,
+                        color: activeItem.tagColor === '#16A34A' ? '#4ADE80' : activeItem.tagColor || '#FB923C',
+                        borderColor: `${activeItem.tagColor || '#16A34A'}40`,
+                      }}
                     >
-                      <div className="text-base sm:text-lg font-black text-white">
-                        {metric.value}
-                      </div>
-                      <div className="text-[11px] sm:text-xs text-slate-300 font-medium">
-                        {metric.label}
-                      </div>
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{activeItem.tag}</span>
+                    </span>
+
+                    <div className="flex items-center gap-1" aria-label={`${activeItem.rating} out of 5 stars`}>
+                      {[...Array(activeItem.rating || 5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-orange-400 text-orange-400"
+                          aria-hidden="true"
+                        />
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Quote with Icon */}
+                  <div className="relative mb-6">
+                    <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-orange-400/40 mb-2 rotate-180" />
+                    <p className="text-base sm:text-lg md:text-[19px] text-white font-medium leading-relaxed italic">
+                      "{activeItem.fullQuote || activeItem.quote}"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Student / Mentor Details */}
+                <div className="pt-5 border-t border-white/15 mt-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight truncate">
+                          {activeItem.name}
+                        </h3>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                      </div>
+                      <p className="text-sm sm:text-base text-orange-400 font-semibold truncate">
+                        {activeItem.role}
+                      </p>
+                      {activeItem.college && (
+                        <p className="text-xs sm:text-sm text-slate-300 truncate mt-0.5">
+                          {activeItem.college}
+                        </p>
+                      )}
+                    </div>
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg shadow-md flex-shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${activeItem.tagColor || '#F97316'}, #1E5BD8)`,
+                      }}
+                    >
+                      {activeItem.name.charAt(0)}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,13 +245,14 @@ export default function Testimonials() {
 
           {/* RIGHT COLUMN: Infinite Review Marquee Ticker */}
           <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Header info bar */}
             <div className="flex items-center justify-between mb-3 px-1">
               <span className="text-xs sm:text-sm font-semibold text-slate-300 tracking-wide uppercase flex items-center gap-1.5">
                 <TrendingUp className="w-4 h-4 text-orange-400" />
-                Live Student & Mentor Feedback
+                Click Any Card to Read Full Story
               </span>
               <span className="text-xs text-slate-400">
-                {isPaused ? '(Paused)' : 'Hover or touch to pause'}
+                {isPaused ? '(Paused)' : 'Hover or tap to pause'}
               </span>
             </div>
 
@@ -218,39 +278,71 @@ export default function Testimonials() {
                   willChange: 'transform',
                 }}
               >
-                {duplicatedReviews.map((item, idx) => (
-                  <div
-                    key={`${item.name}-${idx}`}
-                    className="bg-white/10 hover:bg-white/15 border border-white/15 rounded-xl p-4 sm:p-5 transition-colors duration-200 backdrop-blur-sm"
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-white"
-                        style={{ backgroundColor: item.tagColor }}
-                      >
-                        {item.tag}
-                      </span>
-                      <div className="flex items-center gap-0.5">
-                        {[...Array(item.rating)].map((_, sIdx) => (
-                          <Star
-                            key={sIdx}
-                            className="w-3.5 h-3.5 fill-orange-400 text-orange-400"
-                            aria-hidden="true"
-                          />
-                        ))}
+                {duplicatedReviews.map((item, idx) => {
+                  const isActive = activeItem.name === item.name;
+
+                  return (
+                    <div
+                      key={`${item.name}-${idx}`}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={isActive}
+                      onClick={() => handleSelectReview(item)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleSelectReview(item);
+                        }
+                      }}
+                      className={`relative text-left rounded-xl p-4 sm:p-5 transition-all duration-200 backdrop-blur-sm cursor-pointer select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
+                        isActive
+                          ? 'bg-white/20 border-2 border-orange-400 shadow-lg ring-1 ring-orange-400/40'
+                          : 'bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span
+                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-white"
+                          style={{ backgroundColor: item.tagColor || '#16A34A' }}
+                        >
+                          {item.tag}
+                        </span>
+
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-0.5">
+                            {[...Array(item.rating || 5)].map((_, sIdx) => (
+                              <Star
+                                key={sIdx}
+                                className="w-3.5 h-3.5 fill-orange-400 text-orange-400"
+                                aria-hidden="true"
+                              />
+                            ))}
+                          </div>
+                          {isActive && (
+                            <span className="text-[11px] font-bold text-orange-400 bg-orange-500/20 px-2 py-0.5 rounded-full hidden sm:inline">
+                              Active
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <p className="text-sm sm:text-base text-slate-100 font-normal leading-relaxed mb-3 line-clamp-2">
+                        "{item.quote}"
+                      </p>
+
+                      <div className="flex items-center justify-between text-xs sm:text-sm pt-1 border-t border-white/10">
+                        <div className="flex flex-col">
+                          <span className="font-bold text-white">{item.name}</span>
+                          <span className="text-slate-300 text-xs">{item.role}</span>
+                        </div>
+                        <span className="text-orange-400 text-xs font-semibold inline-flex items-center gap-1 hover:underline">
+                          <span>{isActive ? 'Showing' : 'View full'}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
                       </div>
                     </div>
-
-                    <p className="text-sm sm:text-base text-slate-100 font-normal leading-relaxed mb-3">
-                      "{item.quote}"
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs sm:text-sm">
-                      <span className="font-bold text-white">{item.name}</span>
-                      <span className="text-slate-300">{item.role}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

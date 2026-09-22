@@ -225,71 +225,93 @@ export const TESTIMONIALS_CONTENT = {
   subheading: 'See how practical guidance and real-world internships turn confusion into career clarity.',
   spotlight: {
     tag: 'Placement Success Story',
+    tagColor: '#16A34A',
     name: 'Rahul Verma',
     role: 'Junior Cloud Engineer',
     college: 'B.Tech CSE Graduate',
     rating: 5,
     quote:
       'I was overwhelmed by online courses and lacked real project confidence. Through SLG Solutions, I worked on live cloud infrastructure with a senior mentor. In just 45 days, I gained the skills and interview clarity needed to crack my first tech placement!',
-    metrics: [
-      { value: '45 Days', label: 'To First Placement' },
-      { value: '1-on-1', label: 'Mentor Guidance' },
-      { value: '100%', label: 'Hands-on Projects' },
-    ],
+    fullQuote:
+      'I was overwhelmed by online courses and lacked real project confidence. Through SLG Solutions, I worked on live cloud infrastructure with a senior mentor. In just 45 days, I gained the skills and interview clarity needed to crack my first tech placement!',
   },
   tickerReviews: [
     {
+      id: 'review-1',
       name: 'Priya Nair',
       role: 'Final Year IT Student',
+      college: 'B.Tech IT, 2025 Batch',
       tag: 'Internships',
       tagColor: '#F97316',
       quote:
         'The hands-on internship gave me actual project exposure that helped me stand out in campus placements.',
+      fullQuote:
+        'The hands-on internship at SLG Solutions gave me actual project exposure that classroom textbooks could never teach. Building real microservices and collaborating in team sprints helped me stand out during technical interviews and secure multiple placement offers.',
       rating: 5,
     },
     {
+      id: 'review-2',
       name: 'Aditya Rao',
-      role: 'Computer Engineering',
+      role: 'Cloud DevOps Enthusiast',
+      college: 'Computer Science & Engineering',
       tag: 'Expert Insights',
       tagColor: '#1E5BD8',
       quote:
         'Interacting directly with seasoned tech leaders during Expert Insights gave me absolute clarity on my cloud career path.',
+      fullQuote:
+        'Interacting directly with seasoned tech leaders during the Expert Insights sessions gave me absolute clarity on my career path. Instead of blindly learning random tools, I received honest advice on industry demands, real architectures, and how to build a career with confidence.',
       rating: 5,
     },
     {
+      id: 'review-3',
       name: 'Vikramaditya S.',
       role: 'Senior Tech Lead & Industry Mentor',
+      college: '10+ Years in Tech Leadership',
       tag: 'Mentor Initiative',
       tagColor: '#16A34A',
       quote:
         'As an industry mentor, guiding these enthusiastic students through SLG Solutions has been deeply rewarding.',
+      fullQuote:
+        'As an industry mentor, guiding these enthusiastic students through SLG Solutions has been one of the most rewarding experiences of my career. The platform bridges the divide between academia and enterprise needs, enabling eager learners to become competent professionals.',
       rating: 5,
     },
     {
+      id: 'review-4',
       name: 'Sneha Patel',
-      role: 'B.Tech Graduate',
+      role: 'Software Engineer',
+      college: 'B.Tech Graduate, Tech Placed',
       tag: 'Placements',
       tagColor: '#7C3AED',
       quote:
         'SLG helped bridge the gap between classroom theory and what companies actually test. Cracked my job placement with confidence!',
+      fullQuote:
+        'SLG Solutions helped bridge the gap between classroom theory and what modern tech companies actually test for. From mock coding rounds to resume refinement with senior professionals, I felt completely prepared and cracked my top-tier placement!',
       rating: 5,
     },
     {
+      id: 'review-5',
       name: 'Manish Das',
-      role: 'MCA Student',
+      role: 'Full Stack Developer',
+      college: 'Master of Computer Applications',
       tag: 'Practical Learning',
       tagColor: '#0D9488',
       quote:
         'The real-world projects we built directly matched interview questions. Truly from confusion to clarity!',
+      fullQuote:
+        'The real-world projects we built directly matched interview scenarios and system design questions. Working with live databases, authentication pipelines, and APIs transformed my resume. It truly took me from confusion to career clarity!',
       rating: 5,
     },
     {
+      id: 'review-6',
       name: 'Prof. Sunita Jena',
       role: 'College Faculty Advisor',
+      college: 'Department of Computer Science',
       tag: 'Academic Partner',
       tagColor: '#EA580C',
       quote:
         'Honest career discussions with experienced professionals helped our students avoid common early-career mistakes.',
+      fullQuote:
+        'Inviting SLG Solutions for interactive sessions with our students was a game-changer. The honest career discussions with experienced industry professionals answered real questions our curriculum rarely addresses, preparing our batch for real-world transitions.',
       rating: 5,
     },
   ],

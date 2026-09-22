@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+// "Does this user prefer less animation"
+
 export function usePrefersReducedMotion() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 

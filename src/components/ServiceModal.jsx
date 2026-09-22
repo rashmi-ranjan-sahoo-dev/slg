@@ -211,12 +211,26 @@ export default function ServiceModal({ service, isOpen, onClose }) {
           <div className="w-10 sm:w-12 h-1 bg-orange-500 rounded-full my-3 sm:my-4 flex-shrink-0" />
 
           {/* Detailed Description */}
-          <p
+          <div
             id="modal-service-desc"
-            className="text-slate-600 text-[13px] sm:text-[15px] font-normal font-['Poppins'] leading-relaxed text-center sm:text-left"
+            className="text-slate-600 text-[13px] sm:text-[15px] font-normal font-['Poppins'] leading-relaxed text-center sm:text-left space-y-3 w-full"
           >
-            {service.moreText}
-          </p>
+            {Array.isArray(service.moreParagraphs) ? (
+              service.moreParagraphs.map((para, pIdx) => (
+                <p key={pIdx}>{para}</p>
+              ))
+            ) : (
+              <p className="whitespace-pre-line">{service.moreText}</p>
+            )}
+
+            {service.tagline && (
+              <div className="mt-4 p-3 sm:p-3.5 rounded-xl bg-orange-50/80 border border-orange-200/80 text-center">
+                <p className="font-bold text-orange-600 text-xs sm:text-sm tracking-wide">
+                  {service.tagline}
+                </p>
+              </div>
+            )}
+          </div>
 
           {/* Close Action Button */}
           <button

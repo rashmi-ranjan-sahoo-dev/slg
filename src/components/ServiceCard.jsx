@@ -189,14 +189,26 @@ export default function ServiceCard({
             className="w-full overflow-hidden"
             style={{ height: 0, visibility: 'hidden' }}
           >
-            <div ref={contentRef} className="pt-4 flex flex-col items-center px-1">
+            <div ref={contentRef} className="pt-4 flex flex-col items-center px-1 pb-2">
               {/* Thin short orange divider line (about 40px wide) with ~16px spacing */}
-              <div className="w-10 h-[2px] bg-orange-500 rounded-full mb-4" />
+              <div className="w-10 h-[2px] bg-orange-500 rounded-full mb-3.5" />
 
               {/* Expanded Copy */}
-              <p className="text-[13px] md:text-[14px] font-normal font-['Poppins'] text-slate-500 text-center leading-[1.65] max-w-[340px]">
-                {service.moreText}
-              </p>
+              <div className="text-[13px] md:text-[14px] font-normal font-['Poppins'] text-slate-500 text-center leading-[1.65] max-w-[340px] space-y-2.5">
+                {Array.isArray(service.moreParagraphs) ? (
+                  service.moreParagraphs.map((para, pIdx) => (
+                    <p key={pIdx}>{para}</p>
+                  ))
+                ) : (
+                  <p className="whitespace-pre-line">{service.moreText}</p>
+                )}
+
+                {service.tagline && (
+                  <p className="font-semibold text-orange-600 text-[12.5px] sm:text-[13px] pt-1 tracking-wide">
+                    {service.tagline}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         )}

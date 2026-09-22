@@ -69,7 +69,13 @@ export const SERVICES_CONTENT = {
       title: 'Internships',
       description: 'Learn through real-world experience.',
       moreText:
-        "Step into real projects guided by experienced mentors. You'll work with practical tools, solve real problems and build a portfolio that shows employers what you can actually do, not just what you've studied.",
+        'Internships can help young people gain practical experience, develop industry-relevant skills, understand workplace environments, and strengthen their career profile.\n\nSLG Solutions provides regular internship updates and opportunities that can be useful for students and unemployed youth.\n\nOur goal is to make students and youth more aware of relevant internship opportunities and help them take the right steps toward gaining real-world experience.\n\nStay informed. Explore opportunities. Gain experience.',
+      moreParagraphs: [
+        'Internships can help young people gain practical experience, develop industry-relevant skills, understand workplace environments, and strengthen their career profile.',
+        'SLG Solutions provides regular internship updates and opportunities that can be useful for students and unemployed youth.',
+        'Our goal is to make students and youth more aware of relevant internship opportunities and help them take the right steps toward gaining real-world experience.',
+      ],
+      tagline: 'Stay informed. Explore opportunities. Gain experience.',
       icon: 'GraduationCap',
       badgeBg: '#F97316',
       image: internshipsImg,
@@ -82,7 +88,12 @@ export const SERVICES_CONTENT = {
       title: 'Expert Insights',
       description: 'Learn directly from industry professionals.',
       moreText:
-        'Hear directly from professionals who have walked the path before you. Through talks and interactive sessions, they share honest career advice, industry trends and lessons that classrooms rarely cover, so you can choose your direction with clarity.',
+        'SLG Solutions brings experienced professionals, industry experts, educators, entrepreneurs, and subject-matter experts to share their knowledge and real-world experiences with students and young people.\n\nThrough expert interviews and conversations, we cover career guidance, emerging technologies, new courses, industry trends, job opportunities, skills, and real-world challenges.\n\nReal Experience. Practical Knowledge. Better Awareness',
+      moreParagraphs: [
+        'SLG Solutions brings experienced professionals, industry experts, educators, entrepreneurs, and subject-matter experts to share their knowledge and real-world experiences with students and young people.',
+        'Through expert interviews and conversations, we cover career guidance, emerging technologies, new courses, industry trends, job opportunities, skills, and real-world challenges.',
+      ],
+      tagline: 'Real Experience. Practical Knowledge. Better Awareness',
       icon: 'Lightbulb',
       badgeBg: '#1E5BD8',
       image: expertInsightsImg,
@@ -95,7 +106,12 @@ export const SERVICES_CONTENT = {
       title: 'Placements',
       description: 'Connect talent with career opportunities.',
       moreText:
-        'We connect skilled students with companies looking for fresh talent. From preparing you for opportunities to bringing you face to face with the right employers, we help turn your skills into a career you can be proud of.',
+        'SLG Solutions provides placement updates and job opportunities that can help students and unemployed youth stay informed about available career opportunities.\n\nWe aim to share relevant information about job openings, recruitment drives, placement opportunities, eligibility, required skills, and application details, helping young people better understand and explore opportunities that match their interests and qualifications.\n\nStay informed. Explore opportunities. Take your next career step.',
+      moreParagraphs: [
+        'SLG Solutions provides placement updates and job opportunities that can help students and unemployed youth stay informed about available career opportunities.',
+        'We aim to share relevant information about job openings, recruitment drives, placement opportunities, eligibility, required skills, and application details, helping young people better understand and explore opportunities that match their interests and qualifications.',
+      ],
+      tagline: 'Stay informed. Explore opportunities. Take your next career step.',
       icon: 'BriefcaseBusiness',
       badgeBg: '#16A34A',
       image: placementsImg,

@@ -334,8 +334,8 @@ export const CONTACT_CONTENT = {
     {
       id: 'phone',
       title: 'Call / WhatsApp',
-      value: '+91 98765 43210',
-      link: 'tel:+919876543210',
+      value: '+91 98613 41427',
+      link: 'https://wa.me/919861341427',
       hint: 'Mon – Sat, 9:00 AM to 6:00 PM IST',
     },
     {
@@ -352,7 +352,6 @@ export const CONTACT_CONTENT = {
     'College / Educational Institution',
     'Recruiter / Employer',
   ],
-  guaranteeText: '100% Free Initial Career Consultation & Prompt Response',
 };
 
 export const FOOTER_CONTENT = {

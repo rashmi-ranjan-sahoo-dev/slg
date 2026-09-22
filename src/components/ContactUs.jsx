@@ -36,9 +36,9 @@ export default function ContactUs() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState('');
 
-  const { badge, heading, highlight, subtitle, channels, roles, guaranteeText } =
-    CONTACT_CONTENT;
+  const { badge, heading, highlight, subtitle, channels, roles } = CONTACT_CONTENT;
 
   useGSAP(
     () => {
@@ -71,14 +71,31 @@ export default function ContactUs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return;
 
     setIsSubmitting(true);
-    // Simulate brief network submission
+
+    const messageText = `*New Query - SLG Solutions*
+
+*Name:* ${formData.name.trim()}
+*Email:* ${formData.email.trim()}
+*Category / Role:* ${formData.role}
+*Message:* ${formData.message.trim()}`;
+
+    const url = `https://wa.me/919861341427?text=${encodeURIComponent(messageText)}`;
+    setWhatsappLink(url);
+
+    // Open WhatsApp in a new tab immediately (handles user gesture cleanly)
+    try {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      console.warn('Direct popup prevented, fallback button available', err);
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 600);
+    }, 400);
   };
 
   const handleReset = () => {
@@ -88,6 +105,7 @@ export default function ContactUs() {
       role: roles[0],
       message: '',
     });
+    setWhatsappLink('');
     setIsSubmitted(false);
   };
 
@@ -153,12 +171,6 @@ export default function ContactUs() {
                 </a>
               ))}
             </div>
-
-            {/* Response Guarantee Pill */}
-            <div className="mt-6 flex items-center gap-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-medium w-full">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-              <span>{guaranteeText}</span>
-            </div>
           </div>
 
           {/* RIGHT COLUMN: Interactive Form Card */}
@@ -166,23 +178,36 @@ export default function ContactUs() {
             <div className="bg-slate-50/90 rounded-[20px] sm:rounded-[24px] p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-lg relative overflow-hidden">
               {isSubmitted ? (
                 /* Success Feedback Message */
-                <div className="py-12 px-4 flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                <div className="py-10 px-4 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 shadow-xs">
                     <CheckCircle2 className="w-9 h-9 stroke-[2.5]" />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0A1F4D] mb-2">
-                    Message Sent Successfully!
+                    Redirecting to WhatsApp...
                   </h3>
-                  <p className="text-base text-slate-600 max-w-md mb-6 leading-relaxed">
-                    Thank you, <span className="font-semibold text-[#0A1F4D]">{formData.name}</span>. Our team has received your query and will connect with you within 24 hours.
+                  <p className="text-sm sm:text-base text-slate-600 max-w-md mb-6 leading-relaxed">
+                    Thank you, <span className="font-semibold text-[#0A1F4D]">{formData.name}</span>! Your query has been compiled. If WhatsApp did not open automatically, click below to send your query directly.
                   </p>
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B2A5B] hover:bg-[#0A1F4D] text-white font-bold text-sm sm:text-base transition-all active:scale-95 shadow-md"
-                  >
-                    <span>Send Another Message</span>
-                  </button>
+                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full justify-center max-w-md">
+                    {whatsappLink && (
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base transition-all active:scale-95 shadow-md"
+                      >
+                        <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>Continue to WhatsApp</span>
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#0B2A5B] hover:bg-[#0A1F4D] text-white font-bold text-sm sm:text-base transition-all active:scale-95 shadow-md cursor-pointer"
+                    >
+                      <span>Send Another Query</span>
+                    </button>
+                  </div>
                 </div>
               ) : (
                 /* Main Form */
@@ -299,7 +324,7 @@ export default function ContactUs() {
                     className="w-full min-h-[52px] px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 active:scale-[0.98] text-white font-extrabold text-base tracking-wider uppercase transition-all shadow-md hover:shadow-xl flex items-center justify-center gap-2.5 disabled:opacity-70 cursor-pointer"
                   >
                     {isSubmitting ? (
-                      <span>Sending Message...</span>
+                      <span>Redirecting to WhatsApp...</span>
                     ) : (
                       <>
                         <span>Submit Query</span>

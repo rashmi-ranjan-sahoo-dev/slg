@@ -157,11 +157,11 @@ export default function Hero({ isLoaded }) {
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}
     >
-      {/* Full bleed grid on desktop */}
-      <div className="w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
-          {/* Left Column: Typography with responsive padding */}
-          <div className="lg:col-span-6 z-10 text-left px-5 sm:px-8 lg:pl-10 lg:pr-6 xl:pl-16 xl:pr-8 2xl:pl-24">
+      {/* Standard Container matching all other sections */}
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+          {/* Left Column: Typography */}
+          <div className="lg:col-span-6 z-10 text-left">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
             <div ref={verticalsRef} className="w-full mb-3 sm:mb-5 select-none">
               {/* Desktop: clean static line with responsive spacing and font */}
@@ -267,18 +267,18 @@ export default function Hero({ isLoaded }) {
             </button>
           </div>
 
-          {/* Right Column: Hero Classroom Image with padding right matching left padding */}
-          <div className="lg:col-span-6 relative w-full h-full flex items-center justify-end px-5 sm:px-8 lg:pl-0 lg:pr-10 xl:pr-16 2xl:pr-24">
+          {/* Right Column: Hero Classroom Image */}
+          <div className="lg:col-span-6 relative w-full h-full flex items-center justify-center lg:justify-end">
             <div
               ref={imageContainerRef}
-              className="relative w-full h-full min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] xl:min-h-[520px] 2xl:min-h-[600px] overflow-hidden hero-image-mask rounded-2xl sm:rounded-3xl"
+              className="relative w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] xl:min-h-[480px] 2xl:min-h-[540px] overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl border border-white/60 bg-slate-100"
             >
               <img
                 src={heroStudentsImg}
                 alt="Students in classroom listening and learning"
                 width="754"
                 height="566"
-                className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
+                className="w-full h-full object-cover"
                 loading="eager"
                 fetchPriority="high"
               />

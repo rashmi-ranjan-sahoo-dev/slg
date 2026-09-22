@@ -173,7 +173,7 @@ export default function Hero({ isLoaded }) {
                 <span>SUCCESS</span>
               </div>
 
-              {/* Mobile phone screen: smooth infinite single-line marquee scrolling left to right */}
+              {/* Mobile phone screen: smooth infinite single-line marquee scrolling right to left */}
               <div
                 className="md:hidden w-full overflow-hidden relative"
                 style={{
@@ -181,7 +181,7 @@ export default function Hero({ isLoaded }) {
                   WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
                 }}
               >
-                <div className="flex w-max animate-hero-marquee-ltr py-0.5">
+                <div className="flex w-max animate-hero-marquee-rtl py-0.5">
                   {/* Group 1 (50% of track) */}
                   <div className="flex items-center gap-3 text-xs font-bold text-[#0A1F4D] tracking-[0.16em] uppercase whitespace-nowrap pr-3 flex-shrink-0">
                     <span>JOB PLACEMENTS</span>

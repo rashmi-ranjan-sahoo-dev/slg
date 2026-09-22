@@ -167,7 +167,7 @@ export default function Testimonials() {
           <div className="lg:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
-              className="relative bg-white/10 backdrop-blur-md rounded-[20px] p-6 sm:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-[380px] sm:min-h-[420px]"
+              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-7 md:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[380px] lg:min-h-[420px]"
             >
               {/* Background Ambient Glow Accents */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -177,24 +177,24 @@ export default function Testimonials() {
               <div ref={spotlightInnerRef} className="flex flex-col justify-between h-full will-change-transform">
                 <div>
                   {/* Top Badge & Rating Row */}
-                  <div className="flex items-center justify-between gap-3 mb-5">
+                  <div className="flex items-center justify-between gap-3 mb-3 sm:mb-5">
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-[13px] font-bold border uppercase tracking-wider transition-colors duration-200"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-[13px] font-bold border uppercase tracking-wider transition-colors duration-200"
                       style={{
                         backgroundColor: `${activeItem.tagColor || '#16A34A'}25`,
                         color: activeItem.tagColor === '#16A34A' ? '#4ADE80' : activeItem.tagColor || '#FB923C',
                         borderColor: `${activeItem.tagColor || '#16A34A'}40`,
                       }}
                     >
-                      <Sparkles className="w-3.5 h-3.5" />
+                      <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       <span>{activeItem.tag}</span>
                     </span>
 
-                    <div className="flex items-center gap-1" aria-label={`${activeItem.rating} out of 5 stars`}>
+                    <div className="flex items-center gap-0.5 sm:gap-1" aria-label={`${activeItem.rating} out of 5 stars`}>
                       {[...Array(activeItem.rating || 5)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-orange-400 text-orange-400"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-orange-400 text-orange-400"
                           aria-hidden="true"
                         />
                       ))}
@@ -202,35 +202,35 @@ export default function Testimonials() {
                   </div>
 
                   {/* Quote with Icon */}
-                  <div className="relative mb-6">
-                    <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-orange-400/40 mb-2 rotate-180" />
-                    <p className="text-base sm:text-lg md:text-[19px] text-white font-medium leading-relaxed italic">
+                  <div className="relative mb-3 sm:mb-6">
+                    <Quote className="w-6 h-6 sm:w-10 sm:h-10 text-orange-400/40 mb-1 sm:mb-2 rotate-180" />
+                    <p className="text-[13.5px] sm:text-base md:text-lg lg:text-[19px] text-white font-medium leading-relaxed italic">
                       "{activeItem.fullQuote || activeItem.quote}"
                     </p>
                   </div>
                 </div>
 
                 {/* Student / Mentor Details */}
-                <div className="pt-5 border-t border-white/15 mt-4">
+                <div className="pt-3 sm:pt-5 border-t border-white/15 mt-3 sm:mt-4">
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight truncate">
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight truncate">
                           {activeItem.name}
                         </h3>
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
                       </div>
-                      <p className="text-sm sm:text-base text-orange-400 font-semibold truncate">
+                      <p className="text-xs sm:text-sm md:text-base text-orange-400 font-semibold truncate">
                         {activeItem.role}
                       </p>
                       {activeItem.college && (
-                        <p className="text-xs sm:text-sm text-slate-300 truncate mt-0.5">
+                        <p className="text-[11px] sm:text-xs md:text-sm text-slate-300 truncate mt-0.5">
                           {activeItem.college}
                         </p>
                       )}
                     </div>
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg shadow-md flex-shrink-0"
+                      className="w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-black text-sm sm:text-lg shadow-md flex-shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${activeItem.tagColor || '#F97316'}, #1E5BD8)`,
                       }}

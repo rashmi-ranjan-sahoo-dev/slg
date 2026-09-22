@@ -29,52 +29,24 @@ export const HERO_CONTENT = {
     badge: 'About SLG Solutions',
     title: 'From Confusion to Clarity',
     tagline: 'One Platform. Real Experience. Right Guidance.',
-    intro:
-      'SLG Solutions bridges the gap between academic learning and real-world success. We connect students with experienced professionals, industry leaders, and practical opportunities — so they can make confident career decisions backed by clarity, not confusion.',
-    sections: [
-      {
-        heading: 'What We Offer',
-        items: [
-          {
-            label: 'Internships',
-            text: 'Step into real projects guided by experienced mentors. Build a portfolio that shows employers what you can actually do.',
-            color: '#F97316',
-          },
-          {
-            label: 'Expert Insights',
-            text: 'Hear directly from professionals who have walked the path. Honest career advice, industry trends, and lessons classrooms rarely cover.',
-            color: '#1E5BD8',
-          },
-          {
-            label: 'Placements',
-            text: 'We connect skilled students with companies looking for fresh talent and help turn your skills into a career you can be proud of.',
-            color: '#16A34A',
-          },
-        ],
-      },
-      {
-        heading: 'Why SLG Solutions?',
-        items: [
-          {
-            label: 'Real-World Experience',
-            text: 'Practical exposure through hands-on projects and live industry interaction — not just textbook theory.',
-            color: '#7C3AED',
-          },
-          {
-            label: 'Expert Guidance',
-            text: 'Direct access to professionals, educators, and entrepreneurs who share their honest journeys and actionable insights.',
-            color: '#0D9488',
-          },
-          {
-            label: 'Career Opportunities',
-            text: 'From internship placements to job connections, we help you take the next step with confidence and clarity.',
-            color: '#EA580C',
-          },
-        ],
-      },
+    fullText:
+      'SLG Solutions is a platform designed to bridge the gap between students and the real world by connecting young people, especially students and unemployed youth from small cities and towns, with experienced professionals, industry experts, educators, entrepreneurs, and career mentors. Many students have ambition and talent, but may not have access to the right career guidance, industry exposure, or practical knowledge needed to understand the changing world. SLG Solutions aims to bring valuable real-world knowledge onto one platform, covering areas such as technology, job competition, career opportunities, industry trends, workplace expectations, skill development, and effective learning techniques. By learning directly from the experiences, journeys, challenges, and insights of people who have already been through the professional world, students can gain better awareness, prepare themselves for changing opportunities, and make more informed career decisions. Our goal is to create a bridge between education and real-world experience, helping the next generation learn, understand, prepare, and grow with the right knowledge.',
+    paragraphs: [
+      'SLG Solutions is a platform designed to bridge the gap between students and the real world by connecting young people, especially students and unemployed youth from small cities and towns, with experienced professionals, industry experts, educators, entrepreneurs, and career mentors.',
+      'Many students have ambition and talent, but may not have access to the right career guidance, industry exposure, or practical knowledge needed to understand the changing world. SLG Solutions aims to bring valuable real-world knowledge onto one platform, covering areas such as technology, job competition, career opportunities, industry trends, workplace expectations, skill development, and effective learning techniques.',
+      'By learning directly from the experiences, journeys, challenges, and insights of people who have already been through the professional world, students can gain better awareness, prepare themselves for changing opportunities, and make more informed career decisions.',
     ],
-    closingMessage:
-      'Whether you are a student looking for direction or an experienced professional wanting to give back — SLG Solutions is the platform where real stories create real impact.',
+    goalCallout:
+      'Our goal is to create a bridge between education and real-world experience, helping the next generation learn, understand, prepare, and grow with the right knowledge.',
+    focusAreas: [
+      'Technology',
+      'Job Competition',
+      'Career Opportunities',
+      'Industry Trends',
+      'Workplace Expectations',
+      'Skill Development',
+      'Effective Learning Techniques',
+    ],
     footerTagline: 'SLG Solutions — Connecting Experience with the Next Generation.',
   },
 };

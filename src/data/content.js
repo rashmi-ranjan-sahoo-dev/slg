@@ -8,8 +8,8 @@ import changeMakersImg from '../assets/images/story-change-makers.png';
 
 export const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
-  { label: 'Our Services', href: '#services' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];

@@ -29,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen w-full overflow-x-hidden flex flex-col bg-white text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
       {/* Page Loader */}
       {!isLoaded && <Loader onComplete={handleLoaderComplete} />}
 
@@ -37,7 +37,7 @@ export default function App() {
       <Header activeId={activeId} />
 
       {/* Main Content Landmarks */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full overflow-x-hidden">
         <Hero isLoaded={isLoaded} />
         <Services />
         <ShareStory />

@@ -152,7 +152,7 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-20 pb-6 sm:pt-24 md:pt-26 lg:pt-22 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative pt-18 pb-6 sm:pt-20 sm:pb-8 md:pt-22 md:pb-10 lg:pt-20 lg:pb-10 overflow-hidden min-h-[82vh] lg:min-h-[86vh] flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}
@@ -160,12 +160,12 @@ export default function Hero({ isLoaded }) {
       {/* Full bleed grid on desktop */}
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
-          {/* Left Column: Typography with generous padding */}
-          <div className="lg:col-span-6 z-10 text-left px-6 sm:px-10 lg:pl-16 lg:pr-8 xl:pl-24">
+          {/* Left Column: Typography with responsive padding */}
+          <div className="lg:col-span-6 z-10 text-left px-5 sm:px-8 lg:pl-10 lg:pr-6 xl:pl-16 xl:pr-8 2xl:pl-24">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
-            <div ref={verticalsRef} className="w-full mb-4 sm:mb-6 select-none">
-              {/* Desktop: clean static line */}
-              <div className="hidden md:flex items-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm md:text-[15px] font-bold text-[#0A1F4D] tracking-[0.18em] uppercase">
+            <div ref={verticalsRef} className="w-full mb-3 sm:mb-5 select-none">
+              {/* Desktop: clean static line with responsive spacing and font */}
+              <div className="hidden md:flex items-center gap-2 lg:gap-2.5 xl:gap-3 text-xs md:text-xs lg:text-[13px] xl:text-[14px] font-bold text-[#0A1F4D] tracking-[0.12em] lg:tracking-[0.14em] xl:tracking-[0.18em] uppercase whitespace-nowrap">
                 <span>JOB PLACEMENTS</span>
                 <span className="text-slate-300 font-light select-none">|</span>
                 <span>CAREER GROWTH</span>
@@ -217,34 +217,34 @@ export default function Hero({ isLoaded }) {
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[76px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.08]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[54px] 2xl:text-[68px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.1]">
               <span ref={headlineRef} className="block">
                 {HERO_CONTENT.titlePrefix}
               </span>
-              <span className="relative inline-block mt-2">
+              <span className="relative inline-block mt-1 sm:mt-2">
                 <span
                   ref={clarityRef}
-                  className="text-orange-500 font-black text-[56px] sm:text-[68px] md:text-[84px] lg:text-[96px] xl:text-[112px] leading-none block tracking-tight"
+                  className="text-orange-500 font-black text-[48px] sm:text-[60px] md:text-[74px] lg:text-[66px] xl:text-[80px] 2xl:text-[98px] leading-none block tracking-tight"
                 >
                   {HERO_CONTENT.titleHighlight}
                 </span>
                 <span
                   ref={underlineRef}
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 right-0 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+                  className="absolute -bottom-1.5 sm:-bottom-2.5 left-0 right-0 h-1.5 sm:h-2 bg-orange-500 rounded-full"
                 />
               </span>
             </h1>
 
             <p
               ref={subtitleRef}
-              className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl lg:text-[26px] font-semibold text-slate-800 max-w-xl leading-snug"
+              className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-semibold text-slate-800 max-w-xl leading-snug"
             >
               {HERO_CONTENT.subtitle}
             </p>
 
             <div
               ref={barRef}
-              className="mt-3 sm:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+              className="mt-3 sm:mt-3.5 w-16 sm:w-24 h-1.5 sm:h-2 bg-orange-500 rounded-full"
             />
 
             {/* See more button */}
@@ -258,7 +258,7 @@ export default function Hero({ isLoaded }) {
               }}
               aria-haspopup="dialog"
               aria-expanded={isModalOpen}
-              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[48px] px-4 sm:px-5 py-2.5 sm:py-3 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-sm hover:shadow-md"
+              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-4 sm:px-5 py-2 sm:py-2.5 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-xs hover:shadow-sm"
             >
               <span>See more</span>
               <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
@@ -271,7 +271,7 @@ export default function Hero({ isLoaded }) {
           <div className="lg:col-span-6 relative w-full h-full flex items-center justify-end">
             <div
               ref={imageContainerRef}
-              className="relative w-full h-full min-h-[340px] sm:min-h-[440px] lg:min-h-[560px] xl:min-h-[620px] overflow-hidden hero-image-mask"
+              className="relative w-full h-full min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] xl:min-h-[520px] 2xl:min-h-[600px] overflow-hidden hero-image-mask"
             >
               <img
                 src={heroStudentsImg}

@@ -126,7 +126,7 @@ export default function ContactUs() {
             </span>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl md:text-[50px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl md:text-[46px] lg:text-[38px] xl:text-[46px] 2xl:text-[50px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]">
               {heading} <br />
               <span className="text-orange-500">{highlight}</span>
             </h2>
@@ -138,7 +138,7 @@ export default function ContactUs() {
             />
 
             {/* Subtitle */}
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg lg:text-base xl:text-lg text-slate-600 leading-relaxed font-normal">
               {subtitle}
             </p>
 

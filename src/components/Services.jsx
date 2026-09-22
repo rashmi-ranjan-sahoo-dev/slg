@@ -143,8 +143,8 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 3 Services Cards Grid - wider and taking total width */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 md:gap-10 items-start w-full">
+        {/* 3 Services Cards Grid - balanced and responsive across all screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 xl:gap-8 items-stretch w-full">
           {SERVICES_CONTENT.services.map((service, index) => (
             <ServiceCard
               key={service.id}

@@ -86,7 +86,7 @@ export default function ServiceCard({
       className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
     >
       {/* Top Image taking TOTAL WIDTH of the card */}
-      <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+      <div className="relative w-full h-44 sm:h-48 md:h-48 lg:h-48 xl:h-52 overflow-hidden bg-slate-100">
         <img
           src={service.image}
           alt={service.alt}
@@ -101,27 +101,27 @@ export default function ServiceCard({
       {/* Overlapping Circular Badge */}
       <div
         ref={badgeRef}
-        className="-mt-10 sm:-mt-11 relative z-10 w-20 h-20 sm:w-22 sm:h-22 rounded-full flex items-center justify-center text-white shadow-md border-[4px] sm:border-[5px] border-white transition-transform duration-300 group-hover:scale-110"
+        className="-mt-8 sm:-mt-9 relative z-10 w-16 h-16 sm:w-18 sm:h-18 lg:w-18 lg:h-18 rounded-full flex items-center justify-center text-white shadow-md border-[3.5px] sm:border-[4px] border-white transition-transform duration-300 group-hover:scale-110"
         style={{ backgroundColor: service.badgeBg }}
       >
-        <IconComponent className="w-10 h-10 sm:w-11 sm:h-11 stroke-[2.2]" />
+        <IconComponent className="w-8 h-8 sm:w-9 sm:h-9 stroke-[2.2]" />
       </div>
 
       {/* Body Content */}
-      <div className="p-6 sm:p-8 pt-4 flex flex-col items-center flex-grow w-full">
+      <div className="p-4 sm:p-6 lg:p-5 xl:p-6 pt-3 sm:pt-4 flex flex-col items-center flex-grow w-full">
         <h3
           id={titleId}
-          className="text-2xl sm:text-3xl font-extrabold text-[#0A1F4D] tracking-tight mb-3"
+          className="text-xl sm:text-2xl lg:text-xl xl:text-2xl font-extrabold text-[#0A1F4D] tracking-tight mb-2 sm:mb-2.5"
         >
           {service.title}
         </h3>
 
-        <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[52px] sm:min-h-[56px] flex items-center justify-center">
+        <p className="text-sm sm:text-base lg:text-[15px] xl:text-base text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[48px] sm:min-h-[52px] flex items-center justify-center">
           {service.description}
         </p>
 
         {/* Actions Row: YouTube link on Left, See more button on Right */}
-        <div className="mt-6 w-full flex items-center justify-between gap-2 px-1 sm:px-2 pt-2 border-t border-slate-100">
+        <div className="mt-4 sm:mt-5 w-full flex items-center justify-between gap-2 px-1 sm:px-2 pt-2 border-t border-slate-100">
           {/* YouTube Link on Left */}
           <a
             href={service.youtubeUrl || '#'}

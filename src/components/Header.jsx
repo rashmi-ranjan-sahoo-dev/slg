@@ -57,25 +57,23 @@ export default function Header({ activeId }) {
   return (
     <header
       id="site-header"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
-        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-      } ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+        } ${isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100/90 py-1.5 sm:py-2'
           : 'bg-transparent py-2 sm:py-2.5 md:py-3'
-      }`}
+        }`}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between min-h-[44px] sm:min-h-[50px] md:min-h-[54px]">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center justify-between relative min-h-[44px] sm:min-h-[50px] md:min-h-[54px]">
           {/* Compact Logo on Left */}
           <div className="flex-shrink-0 z-10">
             <Logo className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto" />
           </div>
 
-          {/* Desktop Navigation - Responsive & Collision-Free across all PC/laptop screens */}
+          {/* Desktop Navigation Centered in the Middle of Header */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2 ml-auto z-10"
+            className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2.5 absolute left-1/2 -translate-x-1/2 z-10"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeId === item.href.replace('#', '');
@@ -84,11 +82,10 @@ export default function Header({ activeId }) {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative whitespace-nowrap px-3 py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm lg:text-[14px] font-semibold rounded-full transition-all duration-200 tracking-wide select-none ${
-                    isActive
+                  className={`relative whitespace-nowrap px-3 py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm lg:text-[14px] font-semibold rounded-full transition-all duration-200 tracking-wide select-none ${isActive
                       ? 'bg-[#0B2A5B] text-white shadow-xs'
                       : 'text-[#0B2A5B] hover:text-orange-500 hover:bg-slate-100/70 active:scale-95'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </a>

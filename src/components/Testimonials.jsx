@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Star,
   Quote,
@@ -6,6 +6,8 @@ import {
   TrendingUp,
   ArrowRight,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -27,12 +29,12 @@ export default function Testimonials() {
 
   const { badge, heading, subheading, spotlight, tickerReviews } = TESTIMONIALS_CONTENT;
 
-  // Active full card state - defaults to the spotlight story
+  // Active full card state for desktop
   const [activeItem, setActiveItem] = useState(spotlight);
   const [isPaused, setIsPaused] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  // Combine spotlight and ticker items so all reviews are in ticker and selectable
+  // Combine spotlight and ticker items so all reviews are available
   const allReviews = [
     {
       id: 'spotlight-default',
@@ -41,8 +43,87 @@ export default function Testimonials() {
     ...tickerReviews,
   ];
 
-  // Duplicate the array for seamless infinite vertical marquee
+  // Duplicate the array for desktop vertical marquee
   const duplicatedReviews = [...allReviews, ...allReviews];
+
+  // Mobile single card carousel state with clone for infinite right-to-left slide
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isMobilePaused, setIsMobilePaused] = useState(false);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const resumeTimerRef = useRef(null);
+
+  // Array with clone of first item at end for infinite right-to-left wrapping
+  const mobileSlides = [...allReviews, allReviews[0]];
+
+  // Auto-scroll mobile carousel right-to-left infinitely
+  useEffect(() => {
+    if (isMobilePaused || prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      handleNextMobileSlide();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [mobileIndex, isMobilePaused, prefersReducedMotion]);
+
+  const handleNextMobileSlide = () => {
+    setIsTransitioning(true);
+    setMobileIndex((prev) => prev + 1);
+  };
+
+  const handlePrevMobileSlide = () => {
+    if (mobileIndex === 0) {
+      setIsTransitioning(false);
+      setMobileIndex(allReviews.length);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+          setMobileIndex(allReviews.length - 1);
+        });
+      });
+    } else {
+      setIsTransitioning(true);
+      setMobileIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleTransitionEnd = () => {
+    // When reached the clone at the end, immediately snap to 0 without animation
+    if (mobileIndex === allReviews.length) {
+      setIsTransitioning(false);
+      setMobileIndex(0);
+    }
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    setIsMobilePaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  };
+
+  const handleTouchEnd = (e) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        // Swiped left -> advance right to left
+        handleNextMobileSlide();
+      } else {
+        // Swiped right -> go prev
+        handlePrevMobileSlide();
+      }
+    }
+
+    // Resume auto-scroll after 3.5s of no interaction
+    resumeTimerRef.current = setTimeout(() => {
+      setIsMobilePaused(false);
+    }, 3500);
+  };
 
   useGSAP(
     () => {
@@ -90,7 +171,7 @@ export default function Testimonials() {
     { scope: sectionRef, dependencies: [prefersReducedMotion] }
   );
 
-  // Handle clicking a card in the marquee to update the full feedback card
+  // Handle clicking a card in desktop marquee to update spotlight
   const handleSelectReview = (review) => {
     if (activeItem.name === review.name) return;
 
@@ -101,7 +182,6 @@ export default function Testimonials() {
 
     const container = spotlightInnerRef.current;
     if (container) {
-      // Smooth GSAP crossfade & subtle vertical shift
       gsap.to(container, {
         opacity: 0,
         y: -8,
@@ -120,12 +200,9 @@ export default function Testimonials() {
     } else {
       setActiveItem(review);
     }
-
-    // On phone / tablet viewports, smoothly scroll the full card into view
-    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-      spotlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
   };
+
+  const activeMobileIndex = mobileIndex % allReviews.length;
 
   return (
     <section
@@ -161,10 +238,13 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 2-Column Responsive Layout: Left Full Feedback Card + Right Infinite Review Ticker */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
+        {/* ------------------------------------------------------------- */}
+        {/* DESKTOP & TABLET LAYOUT (screens greater than phone: md:grid) */}
+        {/* 2-Column: Left Spotlight Card + Right Marquee Ticker           */}
+        {/* ------------------------------------------------------------- */}
+        <div className="hidden md:grid md:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
           {/* LEFT COLUMN: Full Feedback Spotlight Card */}
-          <div className="lg:col-span-5 flex flex-col">
+          <div className="md:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
               className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-7 md:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[380px] lg:min-h-[420px]"
@@ -244,7 +324,7 @@ export default function Testimonials() {
           </div>
 
           {/* RIGHT COLUMN: Infinite Review Marquee Ticker */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="md:col-span-7 flex flex-col justify-center">
             {/* Header info bar */}
             <div className="flex items-center justify-between mb-3 px-1">
               <span className="text-xs sm:text-sm font-semibold text-slate-300 tracking-wide uppercase flex items-center gap-1.5">
@@ -274,9 +354,7 @@ export default function Testimonials() {
                 className={`flex flex-col gap-3.5 sm:gap-4 ${
                   !prefersReducedMotion && !isPaused ? 'animate-slg-ticker' : ''
                 }`}
-                style={{
-                  willChange: 'transform',
-                }}
+                style={{ willChange: 'transform' }}
               >
                 {duplicatedReviews.map((item, idx) => {
                   const isActive = activeItem.name === item.name;
@@ -345,6 +423,161 @@ export default function Testimonials() {
                 })}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* PHONE SCREEN LAYOUT (md:hidden)                                */}
+        {/* Single Full Feedback Card that Scrolls Right to Left Infinitely*/}
+        {/* ------------------------------------------------------------- */}
+        <div className="md:hidden w-full flex flex-col items-center">
+          {/* Card Carousel Viewport */}
+          <div
+            className="w-full overflow-hidden rounded-[20px] relative select-none"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onMouseEnter={() => setIsMobilePaused(true)}
+            onMouseLeave={() => setIsMobilePaused(false)}
+          >
+            {/* Sliding Track - moves right to left smoothly */}
+            <div
+              onTransitionEnd={handleTransitionEnd}
+              className={`flex w-full ${
+                isTransitioning ? 'transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : 'transition-none'
+              }`}
+              style={{
+                transform: `translateX(-${mobileIndex * 100}%)`,
+                willChange: 'transform',
+              }}
+            >
+              {mobileSlides.map((item, idx) => (
+                <div key={`${item.name}-mobile-${idx}`} className="w-full flex-shrink-0 px-1">
+                  <div className="relative bg-white/10 backdrop-blur-md rounded-[20px] p-5 sm:p-6 border border-white/15 shadow-2xl flex flex-col justify-between overflow-hidden min-h-[360px]">
+                    {/* Background Ambient Glow Accents */}
+                    <div className="absolute -top-20 -left-20 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
+                    <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-[#1E5BD8]/25 rounded-full blur-3xl pointer-events-none" />
+
+                    <div>
+                      {/* Top Badge & Rating Row */}
+                      <div className="flex items-center justify-between gap-3 mb-4">
+                        <span
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border uppercase tracking-wider"
+                          style={{
+                            backgroundColor: `${item.tagColor || '#16A34A'}25`,
+                            color: item.tagColor === '#16A34A' ? '#4ADE80' : item.tagColor || '#FB923C',
+                            borderColor: `${item.tagColor || '#16A34A'}40`,
+                          }}
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>{item.tag}</span>
+                        </span>
+
+                        <div className="flex items-center gap-1" aria-label={`${item.rating || 5} out of 5 stars`}>
+                          {[...Array(item.rating || 5)].map((_, sIdx) => (
+                            <Star
+                              key={sIdx}
+                              className="w-4 h-4 fill-orange-400 text-orange-400"
+                              aria-hidden="true"
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Quote with Icon */}
+                      <div className="relative mb-5">
+                        <Quote className="w-8 h-8 text-orange-400/40 mb-2 rotate-180" />
+                        <p className="text-[15px] sm:text-base text-white font-medium leading-relaxed italic">
+                          "{item.fullQuote || item.quote}"
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Student / Mentor Details */}
+                    <div className="pt-4 border-t border-white/15 mt-3">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5">
+                            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight truncate">
+                              {item.name}
+                            </h3>
+                            <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          </div>
+                          <p className="text-xs sm:text-sm text-orange-400 font-semibold truncate">
+                            {item.role}
+                          </p>
+                          {item.college && (
+                            <p className="text-[11px] sm:text-xs text-slate-300 truncate mt-0.5">
+                              {item.college}
+                            </p>
+                          )}
+                        </div>
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm shadow-md flex-shrink-0"
+                          style={{
+                            background: `linear-gradient(135deg, ${item.tagColor || '#F97316'}, #1E5BD8)`,
+                          }}
+                        >
+                          {item.name.charAt(0)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Controls: Arrows + Dots + Counter */}
+          <div className="w-full flex items-center justify-between mt-4 px-2 select-none">
+            {/* Prev Button */}
+            <button
+              type="button"
+              onClick={handlePrevMobileSlide}
+              aria-label="Previous testimonial"
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-500 active:scale-90 text-white flex items-center justify-center transition-all duration-200 border border-white/15 shadow-sm"
+            >
+              <ChevronLeft className="w-5 h-5 stroke-[2.2]" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex items-center gap-1.5" aria-label="Testimonial navigation dots">
+              {allReviews.map((_, dotIdx) => {
+                const isActive = activeMobileIndex === dotIdx;
+                return (
+                  <button
+                    key={`dot-${dotIdx}`}
+                    onClick={() => {
+                      setIsTransitioning(true);
+                      setMobileIndex(dotIdx);
+                    }}
+                    aria-label={`Go to testimonial ${dotIdx + 1}`}
+                    className={`transition-all duration-300 rounded-full ${
+                      isActive
+                        ? 'w-6 h-2 bg-orange-500 shadow-sm'
+                        : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+                    }`}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Next Button */}
+            <button
+              type="button"
+              onClick={handleNextMobileSlide}
+              aria-label="Next testimonial"
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-500 active:scale-90 text-white flex items-center justify-center transition-all duration-200 border border-white/15 shadow-sm"
+            >
+              <ChevronRight className="w-5 h-5 stroke-[2.2]" />
+            </button>
+          </div>
+
+          {/* Mobile swipe hint & counter */}
+          <div className="mt-2 flex items-center justify-between w-full px-3 text-[11px] text-slate-400">
+            <span>Swipe or auto-scroll</span>
+            <span className="font-semibold text-orange-400">
+              {`0${activeMobileIndex + 1} / 0${allReviews.length}`}
+            </span>
           </div>
         </div>
       </div>

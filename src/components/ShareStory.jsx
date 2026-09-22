@@ -151,7 +151,7 @@ export default function ShareStory() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-20 sm:py-24 md:py-28 bg-white overflow-hidden w-full"
+      className="relative py-14 sm:py-16 md:py-20 bg-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">

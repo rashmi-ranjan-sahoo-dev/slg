@@ -152,7 +152,7 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-28 pb-10 sm:pt-32 md:pt-36 lg:pt-28 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative pt-22 pb-8 sm:pt-26 md:pt-28 lg:pt-24 overflow-hidden min-h-[90vh] flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}

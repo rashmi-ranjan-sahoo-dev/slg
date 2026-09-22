@@ -69,37 +69,40 @@ export default function HeroModal({ isOpen, onClose, content }) {
       scrollContainerRef.current.scrollTop = 0;
     }
 
-    // Lock body scroll only on desktop
+    // Lock body scroll only on desktop to prevent mobile viewport/address-bar jumps
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
     const originalOverflow = document.body.style.overflow;
     if (isDesktop) {
       document.body.style.overflow = 'hidden';
+      // Focus close button on desktop only to avoid mobile focus scroll jumps
       setTimeout(() => {
         closeButtonRef.current?.focus({ preventScroll: true });
       }, 50);
     }
 
-    // Entrance animation
-    if (prefersReducedMotion) {
-      if (backdropRef.current) gsap.set(backdropRef.current, { opacity: 1 });
-      if (modalRef.current) gsap.set(modalRef.current, { opacity: 1, scale: 1, y: 0 });
-    } else {
-      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-      if (backdropRef.current) {
-        gsap.fromTo(
-          backdropRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.25, ease: 'power2.out' }
-        );
+    // Entrance animation — deferred to next frame for glitch-free paint
+    requestAnimationFrame(() => {
+      if (prefersReducedMotion) {
+        if (backdropRef.current) gsap.set(backdropRef.current, { opacity: 1 });
+        if (modalRef.current) gsap.set(modalRef.current, { opacity: 1, scale: 1, y: 0 });
+      } else {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+        if (backdropRef.current) {
+          gsap.fromTo(
+            backdropRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.22, ease: 'power2.out' }
+          );
+        }
+        if (modalRef.current) {
+          gsap.fromTo(
+            modalRef.current,
+            { opacity: 0, scale: isMobile ? 0.99 : 0.96, y: isMobile ? 4 : 12 },
+            { opacity: 1, scale: 1, y: 0, duration: isMobile ? 0.22 : 0.28, ease: 'power2.out' }
+          );
+        }
       }
-      if (modalRef.current) {
-        gsap.fromTo(
-          modalRef.current,
-          { opacity: 0, scale: isMobile ? 0.98 : 0.95, y: isMobile ? 6 : 14 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out' }
-        );
-      }
-    }
+    });
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {

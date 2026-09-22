@@ -113,7 +113,7 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-20 sm:py-24 md:py-28 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative py-14 sm:py-16 md:py-20 bg-[#0B2A5B] text-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header with enlarged typography */}

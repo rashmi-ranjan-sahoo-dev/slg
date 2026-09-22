@@ -110,7 +110,7 @@ export const SERVICES_CONTENT = {
       description: 'Learn directly from industry professionals.',
       moreText:
         'Hear directly from professionals who have walked the path before you. Through talks and interactive sessions, they share honest career advice, industry trends and lessons that classrooms rarely cover, so you can choose your direction with clarity.',
-      icon: 'Presentation',
+      icon: 'Lightbulb',
       badgeBg: '#1E5BD8',
       image: expertInsightsImg,
       alt: 'Industry professional giving a presentation and keynote',

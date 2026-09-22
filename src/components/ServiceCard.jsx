@@ -5,6 +5,7 @@ import {
   Briefcase,
   BriefcaseBusiness,
   Presentation,
+  Lightbulb,
   ArrowRight,
 } from 'lucide-react';
 import { useExpandableCard } from '../hooks/useExpandableCard';
@@ -13,6 +14,7 @@ const ICON_MAP = {
   GraduationCap: GraduationCap,
   Users: Users,
   Presentation: Presentation,
+  Lightbulb: Lightbulb,
   Briefcase: Briefcase,
   BriefcaseBusiness: BriefcaseBusiness,
 };

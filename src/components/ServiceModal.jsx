@@ -4,6 +4,7 @@ import {
   X,
   Users,
   Presentation,
+  Lightbulb,
   BriefcaseBusiness,
   GraduationCap,
   Briefcase,
@@ -16,6 +17,7 @@ const ICON_MAP = {
   GraduationCap,
   Users,
   Presentation,
+  Lightbulb,
   Briefcase,
   BriefcaseBusiness,
 };

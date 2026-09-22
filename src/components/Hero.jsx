@@ -152,7 +152,7 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-28 pb-8 sm:pt-28 md:pt-26 lg:pt-22 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative pt-20 pb-6 sm:pt-24 md:pt-26 lg:pt-22 overflow-hidden min-h-[90vh] flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
       }}
@@ -163,7 +163,7 @@ export default function Hero({ isLoaded }) {
           {/* Left Column: Typography with generous padding */}
           <div className="lg:col-span-6 z-10 text-left px-6 sm:px-10 lg:pl-16 lg:pr-8 xl:pl-24">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
-            <div ref={verticalsRef} className="w-full mb-4 sm:mb-6 select-none mt-1 sm:mt-0">
+            <div ref={verticalsRef} className="w-full mb-4 sm:mb-6 select-none">
               {/* Desktop: clean static line */}
               <div className="hidden md:flex items-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm md:text-[15px] font-bold text-[#0A1F4D] tracking-[0.18em] uppercase">
                 <span>JOB PLACEMENTS</span>

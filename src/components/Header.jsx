@@ -65,7 +65,7 @@ export default function Header({ activeId }) {
           : 'bg-transparent py-2 sm:py-2.5 md:py-3'
       }`}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between min-h-[44px] sm:min-h-[50px] md:min-h-[54px]">
           {/* Compact Logo on Left */}
           <div className="flex-shrink-0 z-10">

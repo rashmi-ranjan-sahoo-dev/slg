@@ -70,7 +70,18 @@ export default function Testimonials() {
 
   const handleNextMobileSlide = () => {
     setIsTransitioning(true);
-    setMobileIndex((prev) => prev + 1);
+    setMobileIndex((prev) => {
+      const next = prev + 1;
+      // Fallback timer: if the browser drops transitionend (e.g. low-power mode, background tab),
+      // ensure we safely snap back to 0 so slides never drift into blank space
+      if (next >= allReviews.length) {
+        setTimeout(() => {
+          setIsTransitioning(false);
+          setMobileIndex(0);
+        }, 750);
+      }
+      return next;
+    });
   };
 
   const handlePrevMobileSlide = () => {
@@ -91,14 +102,15 @@ export default function Testimonials() {
 
   const handleTransitionEnd = () => {
     // When reached the clone at the end, immediately snap to 0 without animation
-    if (mobileIndex === allReviews.length) {
+    if (mobileIndex >= allReviews.length) {
       setIsTransitioning(false);
       setMobileIndex(0);
     }
   };
 
-  // Touch handlers for mobile swipe
+  // Touch handlers for mobile swipe with safety guards
   const handleTouchStart = (e) => {
+    if (!e.touches || !e.touches[0]) return;
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
     setIsMobilePaused(true);
@@ -106,6 +118,7 @@ export default function Testimonials() {
   };
 
   const handleTouchEnd = (e) => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
 
@@ -128,24 +141,30 @@ export default function Testimonials() {
   useGSAP(
     () => {
       if (prefersReducedMotion) {
-        gsap.set([headingRef.current, subheadRef.current, spotlightRef.current], {
-          opacity: 1,
-          y: 0,
-        });
+        gsap.set(
+          [headingRef.current, subheadRef.current, spotlightRef.current].filter(Boolean),
+          {
+            opacity: 1,
+            y: 0,
+          }
+        );
         return;
       }
+
+      // Check if desktop spotlight card is visible in layout
+      const hasSpotlight = spotlightRef.current && window.innerWidth >= 768;
 
       // Initial ScrollTrigger entrance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 85%',
           once: true,
         },
       });
 
       tl.fromTo(
-        [leftLineRef.current, rightLineRef.current],
+        [leftLineRef.current, rightLineRef.current].filter(Boolean),
         { scaleX: 0 },
         { scaleX: 1, duration: 0.6, ease: 'power3.out' }
       )
@@ -160,13 +179,16 @@ export default function Testimonials() {
           { y: 15, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
           '-=0.3'
-        )
-        .fromTo(
+        );
+
+      if (hasSpotlight) {
+        tl.fromTo(
           spotlightRef.current,
           { y: 30, opacity: 0, scale: 0.98 },
           { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out' },
           '-=0.3'
         );
+      }
     },
     { scope: sectionRef, dependencies: [prefersReducedMotion] }
   );
@@ -284,7 +306,7 @@ export default function Testimonials() {
                   {/* Quote with Icon */}
                   <div className="relative mb-3 sm:mb-6">
                     <Quote className="w-6 h-6 sm:w-10 sm:h-10 text-orange-400/40 mb-1 sm:mb-2 rotate-180" />
-                    <p className="text-[13.5px] sm:text-base md:text-lg lg:text-[19px] text-white font-medium leading-relaxed italic">
+                    <p className="text-[13.5px] sm:text-base md:text-lg lg:text-xl xl:text-[22px] text-white font-medium leading-relaxed italic">
                       "{activeItem.fullQuote || activeItem.quote}"
                     </p>
                   </div>
@@ -295,16 +317,16 @@ export default function Testimonials() {
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 sm:gap-2">
-                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight truncate">
+                        <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-bold text-white tracking-tight truncate">
                           {activeItem.name}
                         </h3>
                         <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
                       </div>
-                      <p className="text-xs sm:text-sm md:text-base text-orange-400 font-semibold truncate">
+                      <p className="text-xs sm:text-sm md:text-base lg:text-base xl:text-[17px] text-orange-400 font-semibold truncate">
                         {activeItem.role}
                       </p>
                       {activeItem.college && (
-                        <p className="text-[11px] sm:text-xs md:text-sm text-slate-300 truncate mt-0.5">
+                        <p className="text-[11px] sm:text-xs md:text-sm lg:text-sm text-slate-300 truncate mt-0.5">
                           {activeItem.college}
                         </p>
                       )}
@@ -404,16 +426,16 @@ export default function Testimonials() {
                         </div>
                       </div>
 
-                      <p className="text-sm sm:text-base text-slate-100 font-normal leading-relaxed mb-3 line-clamp-2">
+                      <p className="text-sm sm:text-base md:text-base lg:text-[16px] xl:text-[17px] text-slate-100 font-normal leading-relaxed mb-3 line-clamp-2">
                         "{item.quote}"
                       </p>
 
                       <div className="flex items-center justify-between text-xs sm:text-sm pt-1 border-t border-white/10">
                         <div className="flex flex-col">
-                          <span className="font-bold text-white">{item.name}</span>
-                          <span className="text-slate-300 text-xs">{item.role}</span>
+                          <span className="text-sm sm:text-base md:text-base font-bold text-white">{item.name}</span>
+                          <span className="text-slate-300 text-xs sm:text-xs md:text-sm">{item.role}</span>
                         </div>
-                        <span className="text-orange-400 text-xs font-semibold inline-flex items-center gap-1 hover:underline">
+                        <span className="text-orange-400 text-xs sm:text-xs md:text-sm font-semibold inline-flex items-center gap-1 hover:underline">
                           <span>{isActive ? 'Showing' : 'View full'}</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </span>

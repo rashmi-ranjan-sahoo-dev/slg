@@ -112,7 +112,7 @@ export default function ClosingBanner() {
         <div className="max-w-md sm:max-w-lg lg:max-w-xl text-left">
           <h2
             ref={headlineRef}
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[52px] font-extrabold text-white tracking-tight leading-[1.12]"
+            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[54px] xl:text-[60px] font-extrabold text-white tracking-tight leading-[1.12]"
           >
             {CLOSING_CONTENT.headingPart1} <br className="hidden sm:inline" />
             <span ref={orangePartRef} className="text-orange-500 font-black">
@@ -122,7 +122,7 @@ export default function ClosingBanner() {
 
           <p
             ref={subtextRef}
-            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-slate-200 font-semibold leading-relaxed max-w-md"
+            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-slate-200 font-semibold leading-relaxed max-w-lg"
           >
             {CLOSING_CONTENT.subtext}
           </p>

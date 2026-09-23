@@ -27,7 +27,7 @@ export default function WhyJoinItem({ item, itemRef }) {
           style={{ color: item.iconColor }}
         />
       </div>
-      <span className="text-base sm:text-lg md:text-xl font-bold text-slate-700 leading-snug">
+      <span className="text-base sm:text-lg md:text-xl lg:text-[19px] xl:text-xl font-bold text-slate-700 leading-snug">
         {item.text}
       </span>
     </li>

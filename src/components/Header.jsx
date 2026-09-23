@@ -64,10 +64,10 @@ export default function Header({ activeId }) {
         }`}
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between relative min-h-[44px] sm:min-h-[50px] md:min-h-[54px]">
-          {/* Compact Logo on Left */}
+        <div className="flex items-center justify-between relative min-h-[46px] sm:min-h-[50px] md:min-h-[54px]">
+          {/* Logo on Left - prominent on phone screen */}
           <div className="flex-shrink-0 z-10">
-            <Logo className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto" />
+            <Logo className="h-11 sm:h-9 md:h-10 lg:h-11 w-auto" />
           </div>
 
           {/* Desktop Navigation Centered in the Middle of Header */}
@@ -93,15 +93,15 @@ export default function Header({ activeId }) {
             })}
           </nav>
 
-          {/* Mobile Hamburger Toggle on Right */}
+          {/* Mobile Hamburger Toggle on Right - sized comfortably for mobile header */}
           <div className="md:hidden z-10">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open Navigation Menu"
               aria-expanded={isMobileMenuOpen}
-              className="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 text-[#0B2A5B] hover:bg-slate-200 active:scale-95 transition-all shadow-xs"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 text-[#0B2A5B] hover:bg-slate-200 active:scale-95 transition-all shadow-xs"
             >
-              <Menu className="w-4.5 h-4.5 stroke-[2.2]" />
+              <Menu className="w-5 h-5 stroke-[2.2]" />
             </button>
           </div>
         </div>

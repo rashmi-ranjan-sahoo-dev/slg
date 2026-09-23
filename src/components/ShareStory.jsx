@@ -159,7 +159,7 @@ export default function ShareStory() {
           <div className="lg:col-span-5 flex flex-col items-start pt-1">
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-[44px] lg:text-[38px] xl:text-[48px] 2xl:text-[56px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]"
+              className="text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] xl:text-[52px] 2xl:text-[58px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]"
             >
               Share Your Story. <br />
               Guide the Next Generation.
@@ -172,7 +172,7 @@ export default function ShareStory() {
 
             <p
               ref={paragraphRef}
-              className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-base xl:text-lg text-slate-600 leading-relaxed max-w-lg font-normal"
+              className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-[18px] xl:text-xl text-slate-600 leading-relaxed max-w-lg font-normal"
             >
               {ABOUT_CONTENT.paragraph}
             </p>
@@ -188,7 +188,7 @@ export default function ShareStory() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Watch how sharing your story impacts students on YouTube"
-                className="youtube-card-btn inline-flex items-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] font-bold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
+                className="youtube-card-btn inline-flex items-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] lg:text-[18px] xl:text-xl font-bold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
               >
                 <span className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 fill-current" aria-hidden="true">
@@ -209,7 +209,7 @@ export default function ShareStory() {
                 }}
                 aria-haspopup="dialog"
                 aria-expanded={isModalOpen}
-                className="see-more-btn inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] font-bold text-orange-500 font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
+                className="see-more-btn inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] lg:text-[18px] xl:text-xl font-bold text-orange-500 font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
               >
                 <span>See more</span>
                 <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
@@ -221,7 +221,7 @@ export default function ShareStory() {
             <a
               ref={buttonRef}
               href={ABOUT_CONTENT.buttonLink}
-              className="mt-4 sm:mt-5 inline-flex items-center gap-3 px-7 sm:px-9 py-3 sm:py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base md:text-base tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
+              className="mt-4 sm:mt-5 inline-flex items-center gap-3 px-7 sm:px-9 py-3 sm:py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base md:text-base lg:text-base xl:text-lg tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
             >
               <span>{ABOUT_CONTENT.buttonText}</span>
               <ArrowRight className="w-5 h-5 stroke-[2.8]" />
@@ -241,7 +241,7 @@ export default function ShareStory() {
           <div className="lg:col-span-6 w-full">
             <h3
               ref={whyHeadingRef}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-[#0A1F4D] tracking-tight mb-4 sm:mb-5 text-left"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[34px] xl:text-4xl font-extrabold text-[#0A1F4D] tracking-tight mb-4 sm:mb-5 text-left"
             >
               {ABOUT_CONTENT.whyJoinHeading}
             </h3>

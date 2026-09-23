@@ -63,11 +63,24 @@ export default function MobileMenu({ isOpen, onClose, navItems, activeId }) {
   }, [isOpen]);
 
   const handleLinkClick = (href) => {
+    // 1. Unlock body overflow immediately so mobile browser doesn't block scroll
+    document.body.style.overflow = '';
     onClose();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+
+    // 2. Allow browser frame to unblock scroll and execute smooth navigation
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        const headerOffset = 64;
+        const targetRect = target.getBoundingClientRect();
+        const targetTop = targetRect.top + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth',
+        });
+      }
+    }, 60);
   };
 
   const [mounted, setMounted] = useState(false);

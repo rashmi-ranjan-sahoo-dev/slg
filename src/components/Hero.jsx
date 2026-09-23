@@ -1,14 +1,7 @@
 import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import {
-  Lightbulb,
-  TrendingUp,
-  GraduationCap,
-  Settings,
-  Briefcase,
-  ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import heroStudentsImg from '../assets/images/hero-students.jpg';
@@ -24,7 +17,6 @@ export default function Hero({ isLoaded }) {
   const barRef = useRef(null);
   const seeMoreRef = useRef(null);
   const imageContainerRef = useRef(null);
-  const floatingIconsRef = useRef([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -51,13 +43,8 @@ export default function Hero({ isLoaded }) {
 
       const tl = gsap.timeline({ delay: 0.05 });
 
-      // 1. Photo reveal with scale down (starts immediately so user sees hero image at once)
-      tl.fromTo(
-        imageContainerRef.current,
-        { opacity: 0, scale: 1.04 },
-        { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' },
-        0
-      );
+      // Image and shadow remain completely static without animation
+      gsap.set(imageContainerRef.current, { opacity: 1, scale: 1 });
 
       // 2. 3 Verticals fade up
       tl.fromTo(
@@ -114,36 +101,6 @@ export default function Hero({ isLoaded }) {
         { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' },
         '-=0.2'
       );
-
-      // 7. Floating icons pop in stagger
-      tl.fromTo(
-        floatingIconsRef.current,
-        { scale: 0, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          stagger: 0.08,
-          duration: 0.45,
-          ease: 'back.out(2)',
-        },
-        '-=0.3'
-      );
-
-      // 8. Continuous gentle floating animation for icons
-      floatingIconsRef.current.forEach((icon, idx) => {
-        if (!icon) return;
-        const duration = 2.8 + (idx % 3) * 0.6;
-        const yDist = 5 + (idx % 2) * 4;
-        gsap.to(icon, {
-          y: `-=${yDist}`,
-          rotation: (idx % 2 === 0 ? 1 : -1) * (2 + idx),
-          duration: duration,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: idx * 0.2,
-        });
-      });
     },
     { scope: containerRef, dependencies: [isLoaded, prefersReducedMotion] }
   );
@@ -154,14 +111,14 @@ export default function Hero({ isLoaded }) {
       ref={containerRef}
       className="relative pt-18 pb-6 sm:pt-20 sm:pb-8 md:pt-22 md:pb-10 lg:pt-20 lg:pb-10 overflow-hidden min-h-[82vh] lg:min-h-[86vh] flex items-center"
       style={{
-        background: 'linear-gradient(135deg, #ffffff 0%, #f7faff 45%, #e9f2fc 100%)',
+        background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 42%, #f4f8fe 75%, #eaf2fc 100%)',
       }}
     >
       {/* Standard Container matching all other sections */}
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left Column: Typography */}
-          <div className="lg:col-span-6 z-10 text-left">
+          <div className="lg:col-span-5 z-10 text-left">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
             <div ref={verticalsRef} className="w-full mb-3 sm:mb-5 select-none">
               {/* Desktop: clean static line with responsive spacing and font */}
@@ -217,14 +174,14 @@ export default function Hero({ isLoaded }) {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[54px] 2xl:text-[68px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[58px] 2xl:text-[68px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.1]">
               <span ref={headlineRef} className="block">
                 {HERO_CONTENT.titlePrefix}
               </span>
               <span className="relative inline-block mt-1 sm:mt-2">
                 <span
                   ref={clarityRef}
-                  className="text-orange-500 font-black text-[48px] sm:text-[60px] md:text-[74px] lg:text-[66px] xl:text-[80px] 2xl:text-[98px] leading-none block tracking-tight"
+                  className="text-orange-500 font-black text-[48px] sm:text-[60px] md:text-[74px] lg:text-[76px] xl:text-[88px] 2xl:text-[98px] leading-none block tracking-tight"
                 >
                   {HERO_CONTENT.titleHighlight}
                 </span>
@@ -258,7 +215,7 @@ export default function Hero({ isLoaded }) {
               }}
               aria-haspopup="dialog"
               aria-expanded={isModalOpen}
-              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-4 sm:px-5 py-2 sm:py-2.5 text-[14px] sm:text-[15px] md:text-base font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-xs hover:shadow-sm"
+              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-4 sm:px-5 py-2 sm:py-2.5 text-[14px] sm:text-[15px] md:text-base lg:text-base xl:text-[17px] font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-xs hover:shadow-sm"
             >
               <span>See more</span>
               <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
@@ -267,62 +224,41 @@ export default function Hero({ isLoaded }) {
             </button>
           </div>
 
-          {/* Right Column: Hero Classroom Image */}
-          <div className="lg:col-span-6 relative w-full h-full flex items-center justify-center lg:justify-end">
+          {/* Right Column: Hero Classroom Image - whole image visible without cropping */}
+          <div className="lg:col-span-7 relative w-full flex items-center justify-center lg:justify-end">
             <div
               ref={imageContainerRef}
-              className="relative w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] xl:min-h-[480px] 2xl:min-h-[540px] overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl border border-white/60 bg-slate-100"
+              className="relative w-full max-w-[820px] overflow-hidden rounded-xl md:rounded-2xl"
             >
               <img
                 src={heroStudentsImg}
                 alt="Students in classroom listening and learning"
-                width="754"
-                height="566"
-                className="w-full h-full object-cover"
+                width="1400"
+                height="870"
+                className="w-full h-auto object-contain block scale-[1.06] origin-right md:scale-100 md:origin-center"
                 loading="eager"
                 fetchPriority="high"
               />
 
-              {/* Floating White Line-art Doodle Icons */}
-              {/* 1. Lightbulb */}
+              {/* Left white shadow/gradient overlay for desktop / screens greater than phone only */}
               <div
-                ref={(el) => (floatingIconsRef.current[0] = el)}
-                className="absolute top-10 right-24 sm:right-32 lg:right-36 text-white pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
-              >
-                <Lightbulb className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 stroke-[2.2]" />
-              </div>
+                aria-hidden="true"
+                className="hidden md:block absolute inset-y-0 left-0 w-16 sm:w-20 lg:w-28 pointer-events-none z-10"
+                style={{
+                  background:
+                    'linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0.92) 25%, rgba(255, 255, 255, 0.45) 65%, rgba(255, 255, 255, 0) 100%)',
+                }}
+              />
 
-              {/* 2. Bar chart / TrendingUp */}
+              {/* Top white shadow/gradient overlay for phone screens */}
               <div
-                ref={(el) => (floatingIconsRef.current[1] = el)}
-                className="absolute top-20 right-6 sm:right-12 lg:right-16 text-white pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
-              >
-                <TrendingUp className="w-7 h-7 sm:w-9 sm:h-9 lg:w-10 lg:h-10 stroke-[2.2]" />
-              </div>
-
-              {/* 3. Graduation Cap */}
-              <div
-                ref={(el) => (floatingIconsRef.current[2] = el)}
-                className="absolute top-8 right-44 sm:right-60 lg:right-72 text-white pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] rotate-[-12deg]"
-              >
-                <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 stroke-[2.2]" />
-              </div>
-
-              {/* 4. Gear / Settings */}
-              <div
-                ref={(el) => (floatingIconsRef.current[3] = el)}
-                className="absolute top-36 right-16 sm:right-24 lg:right-28 text-white pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
-              >
-                <Settings className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 stroke-[2.2]" />
-              </div>
-
-              {/* 5. Briefcase */}
-              <div
-                ref={(el) => (floatingIconsRef.current[4] = el)}
-                className="absolute top-44 right-32 sm:right-44 lg:right-52 text-white pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
-              >
-                <Briefcase className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 stroke-[2.2]" />
-              </div>
+                aria-hidden="true"
+                className="md:hidden absolute inset-x-0 top-0 h-14 sm:h-18 pointer-events-none z-10"
+                style={{
+                  background:
+                    'linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.4) 65%, rgba(255, 255, 255, 0) 100%)',
+                }}
+              />
             </div>
           </div>
         </div>

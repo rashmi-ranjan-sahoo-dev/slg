@@ -111,12 +111,12 @@ export default function ServiceCard({
       <div className="p-4 sm:p-6 lg:p-5 xl:p-6 pt-3 sm:pt-4 flex flex-col items-center flex-grow w-full">
         <h3
           id={titleId}
-          className="text-xl sm:text-2xl lg:text-xl xl:text-2xl font-extrabold text-[#0A1F4D] tracking-tight mb-2 sm:mb-2.5"
+          className="text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-[26px] font-extrabold text-[#0A1F4D] tracking-tight mb-2 sm:mb-2.5"
         >
           {service.title}
         </h3>
 
-        <p className="text-sm sm:text-base lg:text-[15px] xl:text-base text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[48px] sm:min-h-[52px] flex items-center justify-center">
+        <p className="text-sm sm:text-base md:text-base lg:text-[16px] xl:text-[17px] text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[48px] sm:min-h-[52px] flex items-center justify-center">
           {service.description}
         </p>
 
@@ -128,7 +128,7 @@ export default function ServiceCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Watch ${service.title} video on YouTube`}
-            className="youtube-card-btn inline-flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] font-semibold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
+            className="youtube-card-btn inline-flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] md:text-[15px] lg:text-[15px] xl:text-base font-semibold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
           >
             <span className="w-5 h-5 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
@@ -147,7 +147,7 @@ export default function ServiceCard({
             aria-expanded={isMiddleCard ? false : isOpen}
             aria-controls={isMiddleCard ? undefined : panelId}
             aria-haspopup={isMiddleCard ? 'dialog' : undefined}
-            className="see-more-btn inline-flex items-center justify-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] font-semibold text-orange-500 font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
+            className="see-more-btn inline-flex items-center justify-center gap-1.5 sm:gap-2 min-h-[44px] px-2.5 sm:px-3 py-2 text-[13px] sm:text-[14px] md:text-[15px] lg:text-[15px] xl:text-base font-semibold text-orange-500 font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
           >
             <span className="relative inline-grid items-center justify-center">
               <span

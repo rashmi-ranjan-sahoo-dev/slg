@@ -59,21 +59,21 @@ export default function Header({ activeId }) {
       id="site-header"
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         } ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100/90 py-1.5 sm:py-2'
-          : 'bg-transparent py-2 sm:py-2.5 md:py-3'
+          ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-slate-200/90 py-2 sm:py-2.5'
+          : 'bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100/90 py-2 sm:py-2.5 md:py-3'
         }`}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between relative min-h-[46px] sm:min-h-[50px] md:min-h-[54px]">
-          {/* Logo on Left - prominent on phone screen */}
-          <div className="flex-shrink-0 z-10">
-            <Logo className="h-11 sm:h-9 md:h-10 lg:h-11 w-auto" />
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
+        <div className="flex items-center justify-between relative min-h-[52px] sm:min-h-[56px] md:min-h-[60px]">
+          {/* Logo on Left - prominent and clearly visible on all screens */}
+          <div className="flex-shrink-0 z-10 flex items-center">
+            <Logo className="h-10 sm:h-11 md:h-12 lg:h-13 xl:h-14 w-auto" />
           </div>
 
           {/* Desktop Navigation Centered in the Middle of Header */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2.5 absolute left-1/2 -translate-x-1/2 z-10"
+            className="hidden md:flex items-center gap-1.5 lg:gap-2.5 absolute left-1/2 -translate-x-1/2 z-10"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeId === item.href.replace('#', '');
@@ -82,9 +82,9 @@ export default function Header({ activeId }) {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative whitespace-nowrap px-3 py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm lg:text-[14px] font-semibold rounded-full transition-all duration-200 tracking-wide select-none ${isActive
-                      ? 'bg-[#0B2A5B] text-white shadow-xs'
-                      : 'text-[#0B2A5B] hover:text-orange-500 hover:bg-slate-100/70 active:scale-95'
+                  className={`relative whitespace-nowrap px-3.5 py-1.5 lg:px-4 lg:py-2 text-[13.5px] lg:text-[15px] font-semibold rounded-full transition-all duration-200 tracking-wide select-none ${isActive
+                    ? 'bg-[#0B2A5B] text-white shadow-xs'
+                    : 'text-[#0B2A5B] hover:text-orange-500 hover:bg-slate-100/80 active:scale-95'
                     }`}
                 >
                   {item.label}

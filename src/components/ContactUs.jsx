@@ -113,9 +113,9 @@ export default function ContactUs() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-white overflow-hidden w-full"
+      className="relative py-12 md:py-16 lg:py-20 bg-white overflow-hidden w-full scroll-mt-16"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
           {/* LEFT COLUMN: Section Info & Direct Contact Cards */}
           <div ref={leftColRef} className="lg:col-span-5 flex flex-col items-start pt-1">
@@ -126,7 +126,7 @@ export default function ContactUs() {
             </span>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl md:text-[2.35rem] lg:text-[2.45rem] xl:text-[2.9rem] 2xl:text-[3.4rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.14]">
               {heading} <br />
               <span className="text-orange-500">{highlight}</span>
             </h2>
@@ -134,23 +134,23 @@ export default function ContactUs() {
             {/* Orange bar */}
             <div
               ref={barRef}
-              className="mt-2.5 sm:mt-3.5 w-16 sm:w-24 h-1.5 sm:h-2 bg-orange-500 rounded-full"
+              className="mt-3 sm:mt-3.5 w-16 sm:w-24 h-1.5 sm:h-2 bg-orange-500 rounded-full"
             />
 
             {/* Subtitle */}
-            <p className="mt-2.5 sm:mt-3.5 text-base sm:text-lg md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.2rem] text-slate-600 leading-relaxed font-normal">
+            <p className="mt-3.5 sm:mt-4 text-base sm:text-lg md:text-[1.1rem] lg:text-[1.15rem] text-slate-600 leading-relaxed font-normal">
               {subtitle}
             </p>
 
             {/* Contact Information Cards */}
-            <div className="mt-5 sm:mt-6 lg:mt-5 xl:mt-8 w-full space-y-2.5 sm:space-y-3.5 lg:space-y-3 xl:space-y-4">
+            <div className="mt-5 sm:mt-6 lg:mt-6 xl:mt-8 w-full space-y-3 sm:space-y-3.5">
               {channels.map((channel) => (
                 <a
                   key={channel.id}
                   href={channel.link}
                   target={channel.id === 'location' ? '_blank' : undefined}
                   rel={channel.id === 'location' ? 'noopener noreferrer' : undefined}
-                  className="group flex items-start gap-3.5 sm:gap-4 p-3 sm:p-3.5 lg:p-3.5 xl:p-4 rounded-xl border border-slate-200/80 bg-slate-50/70 hover:bg-orange-50/60 hover:border-orange-300 transition-all duration-200 shadow-xs"
+                  className="group flex items-start gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 bg-slate-50/70 hover:bg-orange-50/60 hover:border-orange-300 transition-all duration-200 shadow-xs"
                 >
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#0B2A5B] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500 transition-colors duration-200 shadow-sm">
                     {channel.id === 'email' && <Mail className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />}
@@ -282,11 +282,10 @@ export default function ContactUs() {
                             key={r}
                             type="button"
                             onClick={() => setFormData({ ...formData, role: r })}
-                            className={`px-3 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-left transition-all border flex items-center justify-between ${
-                              isSelected
+                            className={`px-3 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-left transition-all border flex items-center justify-between ${isSelected
                                 ? 'bg-orange-500 text-white border-orange-500 shadow-sm'
                                 : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
-                            }`}
+                              }`}
                           >
                             <span>{r}</span>
                             {isSelected && <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />}

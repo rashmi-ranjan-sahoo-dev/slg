@@ -61,7 +61,7 @@ export default function Footer() {
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Footer Content */}
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-12 lg:pt-14 pb-8">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 pt-10 sm:pt-12 lg:pt-14 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 lg:pb-10 border-b border-white/10">
           {/* Column 1: Logo, Brand Mission, & Socials (Span 4) */}
           <div className="lg:col-span-4 flex flex-col items-start">

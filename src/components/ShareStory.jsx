@@ -151,15 +151,15 @@ export default function ShareStory() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-white overflow-hidden w-full"
+      className="relative py-12 md:py-16 lg:py-20 bg-white overflow-hidden w-full scroll-mt-16"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
           {/* Left Column: Heading, Bar, Paragraph, Actions Row, Button */}
           <div className="lg:col-span-5 flex flex-col items-start pt-1">
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-[2.35rem] lg:text-[2.45rem] xl:text-[2.9rem] 2xl:text-[3.4rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]"
+              className="text-3xl sm:text-4xl md:text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.14]"
             >
               Share Your Story. <br />
               Guide the Next Generation.
@@ -167,12 +167,12 @@ export default function ShareStory() {
 
             <div
               ref={barRef}
-              className="mt-2.5 sm:mt-3 lg:mt-3 xl:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+              className="mt-3 sm:mt-3.5 lg:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
             />
 
             <p
               ref={paragraphRef}
-              className="mt-3.5 sm:mt-4 text-base sm:text-lg md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.2rem] text-slate-600 leading-relaxed max-w-lg font-normal"
+              className="mt-4 sm:mt-5 text-base sm:text-lg md:text-[1.1rem] lg:text-[1.15rem] text-slate-600 leading-relaxed max-w-lg font-normal"
             >
               {ABOUT_CONTENT.paragraph}
             </p>
@@ -180,7 +180,7 @@ export default function ShareStory() {
             {/* Actions Row: YouTube link on Left, See more popup button on Right */}
             <div
               ref={actionsRef}
-              className="mt-4 sm:mt-5 w-full max-w-lg flex items-center justify-between gap-3 pt-2 sm:pt-3 pb-1 border-t border-slate-100"
+              className="mt-5 sm:mt-6 w-full max-w-lg flex items-center justify-between gap-3 pt-3 pb-1 border-t border-slate-100"
             >
               {/* YouTube Link on Left */}
               <a
@@ -188,7 +188,7 @@ export default function ShareStory() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Watch how sharing your story impacts students on YouTube"
-                className="youtube-card-btn inline-flex items-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] lg:text-[18px] xl:text-xl font-bold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
+                className="youtube-card-btn inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 text-base md:text-[17px] font-bold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
               >
                 <span className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 fill-current" aria-hidden="true">
@@ -209,7 +209,7 @@ export default function ShareStory() {
                 }}
                 aria-haspopup="dialog"
                 aria-expanded={isModalOpen}
-                className="see-more-btn inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-4 py-2 sm:py-2.5 text-base sm:text-lg md:text-[18px] lg:text-[18px] xl:text-xl font-bold text-orange-500 font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
+                className="see-more-btn inline-flex items-center justify-center gap-2 min-h-[44px] px-3.5 py-2 text-base md:text-[17px] font-bold text-orange-500 font-['Poppins'] rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none"
               >
                 <span>See more</span>
                 <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">
@@ -221,7 +221,7 @@ export default function ShareStory() {
             <a
               ref={buttonRef}
               href={ABOUT_CONTENT.buttonLink}
-              className="mt-4 sm:mt-5 inline-flex items-center gap-3 px-7 sm:px-9 py-3 sm:py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base md:text-base lg:text-base xl:text-lg tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
+              className="mt-5 sm:mt-6 inline-flex items-center gap-3 px-8 sm:px-9 py-3 sm:py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-extrabold text-sm sm:text-base tracking-wider uppercase transition-all shadow-md hover:shadow-xl"
             >
               <span>{ABOUT_CONTENT.buttonText}</span>
               <ArrowRight className="w-5 h-5 stroke-[2.8]" />
@@ -241,7 +241,7 @@ export default function ShareStory() {
           <div className="lg:col-span-6 w-full">
             <h3
               ref={whyHeadingRef}
-              className="text-2xl sm:text-3xl md:text-[1.85rem] lg:text-[1.9rem] xl:text-[2.25rem] font-extrabold text-[#0A1F4D] tracking-tight mb-3 sm:mb-4 lg:mb-3.5 xl:mb-5 text-left"
+              className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-extrabold text-[#0A1F4D] tracking-tight mb-4 lg:mb-5 text-left"
             >
               {ABOUT_CONTENT.whyJoinHeading}
             </h3>

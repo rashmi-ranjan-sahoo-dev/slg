@@ -113,38 +113,38 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative py-12 md:py-16 lg:py-20 bg-[#0B2A5B] text-white overflow-hidden w-full scroll-mt-16"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Section Header with enlarged typography */}
-        <div className="text-center mb-6 sm:mb-8 lg:mb-7 xl:mb-10">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
           <div className="inline-flex items-center justify-center gap-4 sm:gap-6">
             <span
               ref={leftLineRef}
-              className="w-12 sm:w-20 md:w-24 lg:w-24 xl:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right"
+              className="w-12 sm:w-20 md:w-24 lg:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right"
             />
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight text-white"
+              className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] font-extrabold tracking-tight text-white"
             >
               {SERVICES_CONTENT.heading}
             </h2>
             <span
               ref={rightLineRef}
-              className="w-12 sm:w-20 md:w-24 lg:w-24 xl:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left"
+              className="w-12 sm:w-20 md:w-24 lg:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left"
             />
           </div>
 
           <p
             ref={subheadRef}
-            className="mt-2 sm:mt-2.5 lg:mt-2.5 text-base sm:text-xl md:text-[1.2rem] lg:text-[1.25rem] xl:text-[1.4rem] font-medium text-slate-200 tracking-wide"
+            className="mt-3 sm:mt-3.5 text-base sm:text-lg md:text-xl font-medium text-slate-200 tracking-wide max-w-2xl mx-auto"
           >
             {SERVICES_CONTENT.subheading}
           </p>
         </div>
 
         {/* 3 Services Cards Grid - balanced and responsive across all screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 xl:gap-8 items-stretch w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch w-full">
           {SERVICES_CONTENT.services.map((service, index) => (
             <ServiceCard
               key={service.id}

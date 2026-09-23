@@ -83,10 +83,10 @@ export default function ServiceCard({
     <div
       ref={setCardRef}
       onKeyDown={handleKeyDown}
-      className="group relative bg-white rounded-[14px] overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
+      className="group relative bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 flex flex-col items-center text-center w-full"
     >
       {/* Top Image taking TOTAL WIDTH of the card */}
-      <div className="relative w-full h-44 sm:h-48 md:h-44 lg:h-40 xl:h-48 overflow-hidden bg-slate-100">
+      <div className="relative w-full h-48 sm:h-52 md:h-50 lg:h-52 xl:h-56 overflow-hidden bg-slate-100">
         <img
           src={service.image}
           alt={service.alt}
@@ -101,38 +101,38 @@ export default function ServiceCard({
       {/* Overlapping Circular Badge */}
       <div
         ref={badgeRef}
-        className="-mt-7 sm:-mt-8 lg:-mt-7 xl:-mt-8 relative z-10 w-14 h-14 sm:w-16 sm:h-16 lg:w-15 lg:h-15 xl:w-17 xl:h-17 rounded-full flex items-center justify-center text-white shadow-md border-[3.5px] sm:border-[4px] border-white transition-transform duration-300 group-hover:scale-110"
+        className="-mt-7 sm:-mt-8 relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white shadow-md border-[3.5px] sm:border-[4px] border-white transition-transform duration-300 group-hover:scale-110"
         style={{ backgroundColor: service.badgeBg }}
       >
-        <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 lg:w-7.5 lg:h-7.5 xl:w-8 xl:h-8 stroke-[2.2]" />
+        <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
       </div>
 
       {/* Body Content */}
-      <div className="p-4 sm:p-5 lg:p-4 xl:p-6 pt-2.5 sm:pt-3 flex flex-col items-center flex-grow w-full">
+      <div className="p-5 sm:p-6 lg:p-5 xl:p-6 pt-3 flex flex-col items-center flex-grow w-full">
         <h3
           id={titleId}
-          className="text-xl sm:text-2xl md:text-[1.3rem] lg:text-[1.35rem] xl:text-[1.55rem] font-extrabold text-[#0A1F4D] tracking-tight mb-1.5 sm:mb-2"
+          className="text-xl sm:text-2xl font-extrabold text-[#0A1F4D] tracking-tight mb-2 text-center"
         >
           {service.title}
         </h3>
 
-        <p className="text-sm sm:text-base md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.05rem] text-slate-600 leading-relaxed max-w-[320px] flex-grow font-normal min-h-[44px] sm:min-h-[48px] flex items-center justify-center">
+        <p className="text-sm sm:text-[15px] md:text-base text-slate-600 leading-relaxed max-w-[340px] flex-grow font-normal min-h-[50px] sm:min-h-[54px] flex items-center justify-center text-center">
           {service.description}
         </p>
 
         {/* Actions Row: YouTube link on Left, See more button on Right */}
-        <div className="mt-3.5 sm:mt-4 lg:mt-3 xl:mt-4 w-full flex items-center justify-between gap-2 px-1 sm:px-2 pt-2 border-t border-slate-100">
+        <div className="mt-4 w-full flex items-center justify-between gap-2 px-1 pt-3 border-t border-slate-100">
           {/* YouTube Link on Left */}
           <a
             href={service.youtubeUrl || '#'}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Watch ${service.title} video on YouTube`}
-            className="youtube-card-btn inline-flex items-center gap-1.5 sm:gap-2 min-h-[40px] sm:min-h-[44px] px-2 sm:px-2.5 py-1.5 sm:py-2 text-[13px] sm:text-[14px] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.95rem] font-semibold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
+            className="youtube-card-btn inline-flex items-center gap-1.5 sm:gap-2 min-h-[42px] px-2.5 sm:px-3 py-2 text-[13.5px] sm:text-sm font-semibold text-[#FF0000] hover:text-[#CC0000] font-['Poppins'] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-[0.97] group/yt select-none"
           >
             <span className="w-5 h-5 flex items-center justify-center text-[#FF0000] group-hover/yt:scale-110 transition-transform duration-200">
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
             </span>
             <span>YouTube</span>
@@ -151,17 +151,15 @@ export default function ServiceCard({
           >
             <span className="relative inline-grid items-center justify-center">
               <span
-                className={`col-start-1 row-start-1 transition-opacity duration-300 ${
-                  !isMiddleCard && isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                }`}
+                className={`col-start-1 row-start-1 transition-opacity duration-300 ${!isMiddleCard && isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                  }`}
               >
                 See more
               </span>
               {!isMiddleCard && (
                 <span
-                  className={`col-start-1 row-start-1 transition-opacity duration-300 ${
-                    isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}
+                  className={`col-start-1 row-start-1 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
                 >
                   See less
                 </span>

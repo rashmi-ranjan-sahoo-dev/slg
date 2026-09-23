@@ -107,7 +107,7 @@ export default function ClosingBanner() {
       {/* Content Container */}
       <div
         ref={textContainerRef}
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-8 sm:py-10 md:py-10 lg:py-11 xl:py-14"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 py-8 sm:py-10 md:py-12 lg:py-14"
       >
         <div className="max-w-md sm:max-w-lg lg:max-w-xl text-left">
           <h2

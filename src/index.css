@@ -36,42 +36,23 @@
   html {
     font-family: var(--font-sans);
     color: var(--color-slate-text);
-    /* Mobile baseline (strictly 16px to protect mobile screens) */
     font-size: 16px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
   }
 
-  /* Tablet, Laptop, and Desktop screens: Fluid root font-size scaling */
-  @media (min-width: 768px) {
-    html {
-      /* Scales fluidly with both viewport width and height so full sections fit */
-      font-size: clamp(12.5px, min(1vw + 1px, 1.85vh), 16px);
-    }
-  }
-
-  /* Laptops with compact vertical height (14" / 16" with browser bars / Windows display scaling) */
-  @media (min-width: 768px) and (max-height: 750px) {
-    html {
-      font-size: clamp(11.5px, 1.85vh, 13.5px);
-    }
-  }
-
-  /* Extreme short vertical viewports (< 640px, e.g. 150% display scaling on 1080p) */
-  @media (min-width: 768px) and (max-height: 640px) {
-    html {
-      font-size: clamp(11px, 1.8vh, 12.5px);
-    }
-  }
-
-  /* Ultra-wide / Large Desktop Monitors (27" QHD / 4K with width >= 2200px and height >= 1100px) */
+  /* Large 4K Monitors: subtle proportional scale */
   @media (min-width: 2200px) and (min-height: 1100px) {
     html {
-      font-size: clamp(16px, 0.95vw, 18px);
+      font-size: 18px;
     }
   }
 
   body {
     overflow-x: hidden;
     background-color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 
@@ -123,8 +104,10 @@
 
 @media (hover: hover) {
   .see-more-btn:hover {
-    color: #EA580C; /* orange-600 */
+    color: #EA580C;
+    /* orange-600 */
   }
+
   .see-more-btn:hover .see-more-arrow-wrap {
     transform: translateX(4px);
   }
@@ -155,6 +138,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-50%);
   }
@@ -173,6 +157,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }

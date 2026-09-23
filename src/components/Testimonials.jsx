@@ -230,11 +230,11 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative py-12 md:py-16 lg:py-20 bg-[#0B2A5B] text-white overflow-hidden w-full scroll-mt-16"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="text-center mb-6 sm:mb-8 lg:mb-7 xl:mb-10">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
           <div className="flex sm:inline-flex items-center justify-center gap-4 sm:gap-6 w-full">
             <span
               ref={leftLineRef}
@@ -242,7 +242,7 @@ export default function Testimonials() {
             />
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight text-white text-center"
+              className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] font-extrabold tracking-tight text-white text-center"
             >
               Real Stories. <br className="sm:hidden" />
               Real Transformations.
@@ -255,7 +255,7 @@ export default function Testimonials() {
 
           <p
             ref={subheadRef}
-            className="mt-2 sm:mt-2.5 text-base sm:text-lg md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.35rem] font-medium text-slate-200 tracking-wide max-w-2xl mx-auto"
+            className="mt-3 sm:mt-3.5 text-base sm:text-lg md:text-xl font-medium text-slate-200 tracking-wide max-w-2xl mx-auto"
           >
             {subheading}
           </p>
@@ -270,7 +270,7 @@ export default function Testimonials() {
           <div className="md:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
-              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-6 md:p-6 lg:p-5 xl:p-7 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[21.5rem] lg:min-h-[22rem] xl:min-h-[25rem]"
+              className="relative bg-white/10 backdrop-blur-md rounded-[20px] p-5 sm:p-6 md:p-6 lg:p-7 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-[22rem] sm:min-h-[24rem] md:min-h-[26rem] lg:min-h-[26rem]"
             >
               {/* Background Ambient Glow Accents */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -374,9 +374,8 @@ export default function Testimonials() {
 
               {/* Ticker Track */}
               <div
-                className={`flex flex-col gap-2.5 sm:gap-3 ${
-                  !prefersReducedMotion && !isPaused ? 'animate-slg-ticker' : ''
-                }`}
+                className={`flex flex-col gap-2.5 sm:gap-3 ${!prefersReducedMotion && !isPaused ? 'animate-slg-ticker' : ''
+                  }`}
                 style={{ willChange: 'transform' }}
               >
                 {duplicatedReviews.map((item, idx) => {
@@ -395,11 +394,10 @@ export default function Testimonials() {
                           handleSelectReview(item);
                         }
                       }}
-                      className={`relative text-left rounded-xl p-3 sm:p-4 lg:p-3.5 xl:p-4.5 transition-all duration-200 backdrop-blur-sm cursor-pointer select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
-                        isActive
+                      className={`relative text-left rounded-xl p-3 sm:p-4 lg:p-3.5 xl:p-4.5 transition-all duration-200 backdrop-blur-sm cursor-pointer select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${isActive
                           ? 'bg-white/20 border-2 border-orange-400 shadow-lg ring-1 ring-orange-400/40'
                           : 'bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
                         <span
@@ -465,9 +463,8 @@ export default function Testimonials() {
             {/* Sliding Track - moves right to left smoothly */}
             <div
               onTransitionEnd={handleTransitionEnd}
-              className={`flex w-full ${
-                isTransitioning ? 'transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : 'transition-none'
-              }`}
+              className={`flex w-full ${isTransitioning ? 'transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : 'transition-none'
+                }`}
               style={{
                 transform: `translateX(-${mobileIndex * 100}%)`,
                 willChange: 'transform',
@@ -574,11 +571,10 @@ export default function Testimonials() {
                       setMobileIndex(dotIdx);
                     }}
                     aria-label={`Go to testimonial ${dotIdx + 1}`}
-                    className={`transition-all duration-300 rounded-full ${
-                      isActive
+                    className={`transition-all duration-300 rounded-full ${isActive
                         ? 'w-6 h-2 bg-orange-500 shadow-sm'
                         : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-                    }`}
+                      }`}
                   />
                 );
               })}

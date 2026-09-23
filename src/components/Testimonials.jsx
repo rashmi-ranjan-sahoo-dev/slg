@@ -235,20 +235,21 @@ export default function Testimonials() {
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center justify-center gap-4 sm:gap-6">
+          <div className="flex sm:inline-flex items-center justify-center gap-4 sm:gap-6 w-full">
             <span
               ref={leftLineRef}
-              className="w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right"
+              className="hidden sm:inline-block w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right flex-shrink-0"
             />
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white text-center"
             >
-              {heading}
+              Real Stories. <br className="sm:hidden" />
+              Real Transformations.
             </h2>
             <span
               ref={rightLineRef}
-              className="w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left"
+              className="hidden sm:inline-block w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left flex-shrink-0"
             />
           </div>
 

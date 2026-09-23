@@ -94,9 +94,9 @@ export default function ClosingBanner() {
           className="w-full h-full object-cover object-right"
         />
 
-        {/* Soft navy transition on left for pristine text readability without washing out sunset */}
+        {/* Soft navy transition on left for pristine text readability without washing out sunset (desktop/tablet only) */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="hidden sm:block absolute inset-0 pointer-events-none"
           style={{
             background:
               'linear-gradient(to right, #0B2A5B 0%, #0B2A5B 28%, rgba(11, 42, 91, 0.9) 40%, rgba(11, 42, 91, 0) 58%)',
@@ -112,7 +112,7 @@ export default function ClosingBanner() {
         <div className="max-w-md sm:max-w-lg lg:max-w-xl text-left">
           <h2
             ref={headlineRef}
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[54px] xl:text-[60px] font-extrabold text-white tracking-tight leading-[1.12]"
+            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[54px] xl:text-[60px] font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md sm:drop-shadow-none"
           >
             {CLOSING_CONTENT.headingPart1} <br className="hidden sm:inline" />
             <span ref={orangePartRef} className="text-orange-500 font-black">
@@ -122,7 +122,7 @@ export default function ClosingBanner() {
 
           <p
             ref={subtextRef}
-            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-slate-200 font-semibold leading-relaxed max-w-lg"
+            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-slate-100 sm:text-slate-200 font-semibold leading-relaxed max-w-lg drop-shadow-sm sm:drop-shadow-none"
           >
             {CLOSING_CONTENT.subtext}
           </p>

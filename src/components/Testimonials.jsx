@@ -230,11 +230,11 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-[#0B2A5B] text-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-6 sm:mb-8 lg:mb-7 xl:mb-10">
           <div className="flex sm:inline-flex items-center justify-center gap-4 sm:gap-6 w-full">
             <span
               ref={leftLineRef}
@@ -242,7 +242,7 @@ export default function Testimonials() {
             />
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white text-center"
+              className="text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight text-white text-center"
             >
               Real Stories. <br className="sm:hidden" />
               Real Transformations.
@@ -255,7 +255,7 @@ export default function Testimonials() {
 
           <p
             ref={subheadRef}
-            className="mt-2.5 sm:mt-3 text-base sm:text-xl md:text-2xl font-medium text-slate-200 tracking-wide max-w-2xl mx-auto"
+            className="mt-2 sm:mt-2.5 text-base sm:text-lg md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.35rem] font-medium text-slate-200 tracking-wide max-w-2xl mx-auto"
           >
             {subheading}
           </p>
@@ -265,12 +265,12 @@ export default function Testimonials() {
         {/* DESKTOP & TABLET LAYOUT (screens greater than phone: md:grid) */}
         {/* 2-Column: Left Spotlight Card + Right Marquee Ticker           */}
         {/* ------------------------------------------------------------- */}
-        <div className="hidden md:grid md:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
+        <div className="hidden md:grid md:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-stretch w-full">
           {/* LEFT COLUMN: Full Feedback Spotlight Card */}
           <div className="md:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
-              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-7 md:p-8 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[380px] lg:min-h-[420px]"
+              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-6 md:p-6 lg:p-5 xl:p-7 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[340px] lg:min-h-[350px] xl:min-h-[400px]"
             >
               {/* Background Ambient Glow Accents */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -280,7 +280,7 @@ export default function Testimonials() {
               <div ref={spotlightInnerRef} className="flex flex-col justify-between h-full will-change-transform">
                 <div>
                   {/* Top Badge & Rating Row */}
-                  <div className="flex items-center justify-between gap-3 mb-3 sm:mb-5">
+                  <div className="flex items-center justify-between gap-3 mb-2.5 sm:mb-4">
                     <span
                       className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-[13px] font-bold border uppercase tracking-wider transition-colors duration-200"
                       style={{
@@ -305,35 +305,35 @@ export default function Testimonials() {
                   </div>
 
                   {/* Quote with Icon */}
-                  <div className="relative mb-3 sm:mb-6">
-                    <Quote className="w-6 h-6 sm:w-10 sm:h-10 text-orange-400/40 mb-1 sm:mb-2 rotate-180" />
-                    <p className="text-[13.5px] sm:text-base md:text-lg lg:text-xl xl:text-[22px] text-white font-medium leading-relaxed italic">
+                  <div className="relative mb-2.5 sm:mb-4 lg:mb-3 xl:mb-5">
+                    <Quote className="w-6 h-6 sm:w-8 sm:h-8 lg:w-8 lg:h-8 xl:w-10 xl:h-10 text-orange-400/40 mb-1 rotate-180" />
+                    <p className="text-[13.5px] sm:text-base md:text-[1.05rem] lg:text-[1.1rem] xl:text-[1.25rem] text-white font-medium leading-relaxed italic">
                       "{activeItem.fullQuote || activeItem.quote}"
                     </p>
                   </div>
                 </div>
 
                 {/* Student / Mentor Details */}
-                <div className="pt-3 sm:pt-5 border-t border-white/15 mt-3 sm:mt-4">
+                <div className="pt-2.5 sm:pt-4 border-t border-white/15 mt-2.5 sm:mt-3">
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 sm:gap-2">
-                        <h3 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-bold text-white tracking-tight truncate">
+                        <h3 className="text-base sm:text-lg md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.35rem] font-bold text-white tracking-tight truncate">
                           {activeItem.name}
                         </h3>
                         <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
                       </div>
-                      <p className="text-xs sm:text-sm md:text-base lg:text-base xl:text-[17px] text-orange-400 font-semibold truncate">
+                      <p className="text-xs sm:text-sm md:text-sm lg:text-[0.95rem] xl:text-[1.05rem] text-orange-400 font-semibold truncate">
                         {activeItem.role}
                       </p>
                       {activeItem.college && (
-                        <p className="text-[11px] sm:text-xs md:text-sm lg:text-sm text-slate-300 truncate mt-0.5">
+                        <p className="text-[11px] sm:text-xs md:text-xs lg:text-sm text-slate-300 truncate mt-0.5">
                           {activeItem.college}
                         </p>
                       )}
                     </div>
                     <div
-                      className="w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-black text-sm sm:text-lg shadow-md flex-shrink-0"
+                      className="w-9 h-9 sm:w-11 sm:h-11 lg:w-11 lg:h-11 xl:w-12 xl:h-12 rounded-full flex items-center justify-center text-white font-black text-sm sm:text-base lg:text-base xl:text-lg shadow-md flex-shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${activeItem.tagColor || '#F97316'}, #1E5BD8)`,
                       }}
@@ -349,7 +349,7 @@ export default function Testimonials() {
           {/* RIGHT COLUMN: Infinite Review Marquee Ticker */}
           <div className="md:col-span-7 flex flex-col justify-center">
             {/* Header info bar */}
-            <div className="flex items-center justify-between mb-3 px-1">
+            <div className="flex items-center justify-between mb-2 sm:mb-2.5 px-1">
               <span className="text-xs sm:text-sm font-semibold text-slate-300 tracking-wide uppercase flex items-center gap-1.5">
                 <TrendingUp className="w-4 h-4 text-orange-400" />
                 Click Any Card to Read Full Story
@@ -366,15 +366,15 @@ export default function Testimonials() {
               onMouseLeave={() => setIsPaused(false)}
               onTouchStart={() => setIsPaused(true)}
               onTouchEnd={() => setIsPaused(false)}
-              className="relative max-h-[480px] sm:max-h-[520px] overflow-hidden rounded-[20px] bg-[#0A1F4D]/60 border border-white/10 p-3 sm:p-4"
+              className="relative max-h-[350px] sm:max-h-[380px] md:max-h-[350px] lg:max-h-[360px] xl:max-h-[410px] overflow-hidden rounded-[20px] bg-[#0A1F4D]/60 border border-white/10 p-3 sm:p-3.5"
             >
               {/* Gradient masks for smooth fade at top and bottom */}
-              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#0B2A5B] to-transparent z-10 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0B2A5B] to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-8 sm:h-10 bg-gradient-to-b from-[#0B2A5B] to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-8 sm:h-10 bg-gradient-to-t from-[#0B2A5B] to-transparent z-10 pointer-events-none" />
 
               {/* Ticker Track */}
               <div
-                className={`flex flex-col gap-3.5 sm:gap-4 ${
+                className={`flex flex-col gap-2.5 sm:gap-3 ${
                   !prefersReducedMotion && !isPaused ? 'animate-slg-ticker' : ''
                 }`}
                 style={{ willChange: 'transform' }}
@@ -395,15 +395,15 @@ export default function Testimonials() {
                           handleSelectReview(item);
                         }
                       }}
-                      className={`relative text-left rounded-xl p-4 sm:p-5 transition-all duration-200 backdrop-blur-sm cursor-pointer select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
+                      className={`relative text-left rounded-xl p-3 sm:p-4 lg:p-3.5 xl:p-4.5 transition-all duration-200 backdrop-blur-sm cursor-pointer select-none active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
                         isActive
                           ? 'bg-white/20 border-2 border-orange-400 shadow-lg ring-1 ring-orange-400/40'
                           : 'bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30'
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
                         <span
-                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-white"
+                          className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white"
                           style={{ backgroundColor: item.tagColor || '#16A34A' }}
                         >
                           {item.tag}
@@ -414,31 +414,31 @@ export default function Testimonials() {
                             {[...Array(item.rating || 5)].map((_, sIdx) => (
                               <Star
                                 key={sIdx}
-                                className="w-3.5 h-3.5 fill-orange-400 text-orange-400"
+                                className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-orange-400 text-orange-400"
                                 aria-hidden="true"
                               />
                             ))}
                           </div>
                           {isActive && (
-                            <span className="text-[11px] font-bold text-orange-400 bg-orange-500/20 px-2 py-0.5 rounded-full hidden sm:inline">
+                            <span className="text-[10px] sm:text-[11px] font-bold text-orange-400 bg-orange-500/20 px-2 py-0.5 rounded-full hidden sm:inline">
                               Active
                             </span>
                           )}
                         </div>
                       </div>
 
-                      <p className="text-sm sm:text-base md:text-base lg:text-[16px] xl:text-[17px] text-slate-100 font-normal leading-relaxed mb-3 line-clamp-2">
+                      <p className="text-xs sm:text-sm md:text-[0.92rem] lg:text-[0.92rem] xl:text-[1rem] text-slate-100 font-normal leading-relaxed mb-2 sm:mb-2.5 line-clamp-2">
                         "{item.quote}"
                       </p>
 
                       <div className="flex items-center justify-between text-xs sm:text-sm pt-1 border-t border-white/10">
                         <div className="flex flex-col">
-                          <span className="text-sm sm:text-base md:text-base font-bold text-white">{item.name}</span>
-                          <span className="text-slate-300 text-xs sm:text-xs md:text-sm">{item.role}</span>
+                          <span className="text-xs sm:text-sm md:text-[0.95rem] font-bold text-white">{item.name}</span>
+                          <span className="text-slate-300 text-[11px] sm:text-xs md:text-xs">{item.role}</span>
                         </div>
-                        <span className="text-orange-400 text-xs sm:text-xs md:text-sm font-semibold inline-flex items-center gap-1 hover:underline">
+                        <span className="text-orange-400 text-[11px] sm:text-xs md:text-xs font-semibold inline-flex items-center gap-1 hover:underline">
                           <span>{isActive ? 'Showing' : 'View full'}</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         </span>
                       </div>
                     </div>

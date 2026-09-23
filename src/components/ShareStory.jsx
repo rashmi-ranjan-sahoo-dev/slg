@@ -151,15 +151,15 @@ export default function ShareStory() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 bg-white overflow-hidden w-full"
+      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
           {/* Left Column: Heading, Bar, Paragraph, Actions Row, Button */}
           <div className="lg:col-span-5 flex flex-col items-start pt-1">
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] xl:text-[52px] 2xl:text-[58px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]"
+              className="text-3xl sm:text-4xl md:text-[2.35rem] lg:text-[2.45rem] xl:text-[2.9rem] 2xl:text-[3.4rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.12]"
             >
               Share Your Story. <br />
               Guide the Next Generation.
@@ -167,12 +167,12 @@ export default function ShareStory() {
 
             <div
               ref={barRef}
-              className="mt-3 sm:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
+              className="mt-2.5 sm:mt-3 lg:mt-3 xl:mt-4 w-20 sm:w-28 h-2 sm:h-2.5 bg-orange-500 rounded-full"
             />
 
             <p
               ref={paragraphRef}
-              className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-[18px] xl:text-xl text-slate-600 leading-relaxed max-w-lg font-normal"
+              className="mt-3.5 sm:mt-4 text-base sm:text-lg md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.2rem] text-slate-600 leading-relaxed max-w-lg font-normal"
             >
               {ABOUT_CONTENT.paragraph}
             </p>
@@ -241,7 +241,7 @@ export default function ShareStory() {
           <div className="lg:col-span-6 w-full">
             <h3
               ref={whyHeadingRef}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[34px] xl:text-4xl font-extrabold text-[#0A1F4D] tracking-tight mb-4 sm:mb-5 text-left"
+              className="text-2xl sm:text-3xl md:text-[1.85rem] lg:text-[1.9rem] xl:text-[2.25rem] font-extrabold text-[#0A1F4D] tracking-tight mb-3 sm:mb-4 lg:mb-3.5 xl:mb-5 text-left"
             >
               {ABOUT_CONTENT.whyJoinHeading}
             </h3>
@@ -249,7 +249,7 @@ export default function ShareStory() {
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 lg:gap-8 items-end relative w-full">
               {/* 5 Why Join Items */}
               <div className="sm:col-span-7 z-10">
-                <ul className="space-y-4 sm:space-y-5">
+                <ul className="space-y-3 sm:space-y-3.5 lg:space-y-3 xl:space-y-4">
                   {ABOUT_CONTENT.benefits.map((item, index) => (
                     <WhyJoinItem
                       key={item.text}

@@ -109,14 +109,14 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-18 pb-6 sm:pt-20 sm:pb-8 md:pt-22 md:pb-10 lg:pt-20 lg:pb-10 overflow-hidden min-h-[82vh] lg:min-h-[86vh] flex items-center"
+      className="relative pt-18 pb-6 sm:pt-20 sm:pb-8 md:pt-20 md:pb-8 lg:pt-16 lg:pb-8 xl:pt-20 xl:pb-12 overflow-hidden flex items-center"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 42%, #f4f8fe 75%, #eaf2fc 100%)',
       }}
     >
       {/* Standard Container matching all other sections */}
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column: Typography */}
           <div className="lg:col-span-5 z-10 text-left">
             {/* 3 Verticals on top of "From Confusion to Clarity" */}
@@ -174,34 +174,34 @@ export default function Hero({ isLoaded }) {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[58px] 2xl:text-[68px] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-[2.6rem] lg:text-[2.75rem] xl:text-[3.5rem] 2xl:text-[4.25rem] font-extrabold text-[#0A1F4D] tracking-tight leading-[1.1]">
               <span ref={headlineRef} className="block">
                 {HERO_CONTENT.titlePrefix}
               </span>
-              <span className="relative inline-block mt-1 sm:mt-2">
+              <span className="relative inline-block mt-1 sm:mt-1.5">
                 <span
                   ref={clarityRef}
-                  className="text-orange-500 font-black text-[48px] sm:text-[60px] md:text-[74px] lg:text-[76px] xl:text-[88px] 2xl:text-[98px] leading-none block tracking-tight"
+                  className="text-orange-500 font-black text-[48px] sm:text-[60px] md:text-[4rem] lg:text-[4.25rem] xl:text-[5.25rem] 2xl:text-[6rem] leading-none block tracking-tight"
                 >
                   {HERO_CONTENT.titleHighlight}
                 </span>
                 <span
                   ref={underlineRef}
-                  className="absolute -bottom-1.5 sm:-bottom-2.5 left-0 right-0 h-1.5 sm:h-2 bg-orange-500 rounded-full"
+                  className="absolute -bottom-1.5 sm:-bottom-2 left-0 right-0 h-1.5 sm:h-2 bg-orange-500 rounded-full"
                 />
               </span>
             </h1>
 
             <p
               ref={subtitleRef}
-              className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-semibold text-slate-800 max-w-xl leading-snug"
+              className="mt-2.5 sm:mt-3 lg:mt-3 xl:mt-4 text-base sm:text-lg md:text-xl lg:text-[1.1rem] xl:text-[1.35rem] font-semibold text-slate-800 max-w-xl leading-snug"
             >
               {HERO_CONTENT.subtitle}
             </p>
 
             <div
               ref={barRef}
-              className="mt-3 sm:mt-3.5 w-16 sm:w-24 h-1.5 sm:h-2 bg-orange-500 rounded-full"
+              className="mt-2.5 sm:mt-3 w-16 sm:w-24 h-1.5 sm:h-2 bg-orange-500 rounded-full"
             />
 
             {/* See more button */}
@@ -215,7 +215,7 @@ export default function Hero({ isLoaded }) {
               }}
               aria-haspopup="dialog"
               aria-expanded={isModalOpen}
-              className="see-more-btn mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-4 sm:px-5 py-2 sm:py-2.5 text-[14px] sm:text-[15px] md:text-base lg:text-base xl:text-[17px] font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-xs hover:shadow-sm"
+              className="see-more-btn mt-3.5 sm:mt-4 lg:mt-4 xl:mt-5 inline-flex items-center justify-center gap-2 sm:gap-2.5 min-h-[42px] sm:min-h-[46px] px-4 sm:px-5 py-2 sm:py-2.5 text-[14px] sm:text-[15px] md:text-base lg:text-[0.95rem] xl:text-[1.05rem] font-bold text-orange-500 font-['Poppins'] rounded-xl border border-orange-200/60 bg-white/70 backdrop-blur-sm hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 select-none transition-all active:scale-[0.97] shadow-xs hover:shadow-sm"
             >
               <span>See more</span>
               <span className="see-more-arrow-wrap inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6">

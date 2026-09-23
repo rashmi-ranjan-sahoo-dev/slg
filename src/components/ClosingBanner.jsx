@@ -80,7 +80,7 @@ export default function ClosingBanner() {
     <section
       id="closing-banner"
       ref={bannerRef}
-      className="relative min-h-[260px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[360px] overflow-hidden flex items-center bg-[#0B2A5B] w-full"
+      className="relative min-h-[240px] sm:min-h-[260px] md:min-h-[270px] lg:min-h-[290px] xl:min-h-[340px] overflow-hidden flex items-center bg-[#0B2A5B] w-full"
     >
       {/* Background Skyline Image with Hiker, Sunset, and Skyline - Pinned to right */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -107,12 +107,12 @@ export default function ClosingBanner() {
       {/* Content Container */}
       <div
         ref={textContainerRef}
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-12 sm:py-14 md:py-16"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-8 sm:py-10 md:py-10 lg:py-11 xl:py-14"
       >
         <div className="max-w-md sm:max-w-lg lg:max-w-xl text-left">
           <h2
             ref={headlineRef}
-            className="text-3xl sm:text-4xl md:text-[46px] lg:text-[54px] xl:text-[60px] font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md sm:drop-shadow-none"
+            className="text-3xl sm:text-4xl md:text-[2.35rem] lg:text-[2.6rem] xl:text-[3.25rem] font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md sm:drop-shadow-none"
           >
             {CLOSING_CONTENT.headingPart1} <br className="hidden sm:inline" />
             <span ref={orangePartRef} className="text-orange-500 font-black">
@@ -122,7 +122,7 @@ export default function ClosingBanner() {
 
           <p
             ref={subtextRef}
-            className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-slate-100 sm:text-slate-200 font-semibold leading-relaxed max-w-lg drop-shadow-sm sm:drop-shadow-none"
+            className="mt-2.5 sm:mt-3.5 text-base sm:text-lg md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.35rem] text-slate-100 sm:text-slate-200 font-semibold leading-relaxed max-w-lg drop-shadow-sm sm:drop-shadow-none"
           >
             {CLOSING_CONTENT.subtext}
           </p>

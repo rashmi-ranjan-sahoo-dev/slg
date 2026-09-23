@@ -61,19 +61,19 @@ export default function Footer() {
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Footer Content */}
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-white/10">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-12 lg:pt-14 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 lg:pb-10 border-b border-white/10">
           {/* Column 1: Logo, Brand Mission, & Socials (Span 4) */}
           <div className="lg:col-span-4 flex flex-col items-start">
             <Logo variant="light" className="h-12 sm:h-14 w-auto mb-4" />
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal mb-3 max-w-sm">
+            <p className="text-base sm:text-lg md:text-[1.05rem] text-slate-200 leading-relaxed font-normal mb-3 max-w-sm">
               {tagline}
             </p>
 
             {/* Caveat Handwritten Script Note */}
             <p
-              className="text-xl sm:text-2xl md:text-3xl text-orange-400 font-bold mb-6 tracking-wide"
+              className="text-xl sm:text-2xl md:text-[1.75rem] text-orange-400 font-bold mb-5 tracking-wide"
               style={{ fontFamily: "'Caveat', cursive" }}
             >
               "{scriptNote}"
@@ -88,7 +88,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-white/10 hover:bg-orange-500 text-slate-200 hover:text-white flex items-center justify-center transition-all duration-200 active:scale-95 border border-white/10 shadow-xs"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/10 hover:bg-orange-500 text-slate-200 hover:text-white flex items-center justify-center transition-all duration-200 active:scale-95 border border-white/10 shadow-xs"
                 >
                   {renderSocialIcon(social.name)}
                 </a>
@@ -98,16 +98,16 @@ export default function Footer() {
 
           {/* Column 2: Quick Links (Span 2) */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+            <h4 className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-white mb-3 sm:mb-4 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-orange-500" />
               <span>Navigation</span>
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {quickLinks.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-sm sm:text-base md:text-[17px] text-slate-300 hover:text-orange-400 transition-colors inline-block py-1 font-medium"
+                    className="text-sm sm:text-base md:text-[0.95rem] lg:text-[1rem] text-slate-300 hover:text-orange-400 transition-colors inline-block py-0.5 font-medium"
                   >
                     {item.label}
                   </a>
@@ -118,16 +118,16 @@ export default function Footer() {
 
           {/* Column 3: Services (Span 3) */}
           <div className="lg:col-span-3">
-            <h4 className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+            <h4 className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-white mb-3 sm:mb-4 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1E5BD8]" />
               <span>Our Pillars</span>
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {servicesLinks.map((service) => (
                 <li key={service.label}>
                   <a
                     href={service.href}
-                    className="text-sm sm:text-base md:text-[17px] text-slate-300 hover:text-orange-400 transition-colors inline-block py-1 font-medium"
+                    className="text-sm sm:text-base md:text-[0.95rem] lg:text-[1rem] text-slate-300 hover:text-orange-400 transition-colors inline-block py-0.5 font-medium"
                   >
                     {service.label}
                   </a>
@@ -138,13 +138,13 @@ export default function Footer() {
 
           {/* Column 4: Contact Overview (Span 3) */}
           <div className="lg:col-span-3">
-            <h4 className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+            <h4 className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-white mb-3 sm:mb-4 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
               <span>Contact Us</span>
             </h4>
-            <ul className="space-y-3.5 text-sm sm:text-base md:text-[17px] text-slate-200">
+            <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base md:text-[0.95rem] lg:text-[1rem] text-slate-200">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <a
                   href="mailto:contact@slgsolutions.in"
                   className="hover:text-orange-400 transition-colors break-all"
@@ -153,7 +153,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <PhoneCall className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+                <PhoneCall className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <a
                   href="https://wa.me/919861341427"
                   target="_blank"
@@ -164,11 +164,11 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <span>Bhubaneswar, Odisha, India</span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-300">Mon - Sat: 9:00 AM - 6:00 PM</span>
               </li>
             </ul>

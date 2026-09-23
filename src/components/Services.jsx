@@ -113,31 +113,31 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 bg-[#0B2A5B] text-white overflow-hidden w-full"
+      className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-10 md:pb-14 lg:pt-10 lg:pb-12 xl:pt-14 xl:pb-16 bg-[#0B2A5B] text-white overflow-hidden w-full"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header with enlarged typography */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-6 sm:mb-8 lg:mb-7 xl:mb-10">
           <div className="inline-flex items-center justify-center gap-4 sm:gap-6">
             <span
               ref={leftLineRef}
-              className="w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right"
+              className="w-12 sm:w-20 md:w-24 lg:w-24 xl:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-right"
             />
             <h2
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white"
+              className="text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight text-white"
             >
               {SERVICES_CONTENT.heading}
             </h2>
             <span
               ref={rightLineRef}
-              className="w-12 sm:w-20 md:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left"
+              className="w-12 sm:w-20 md:w-24 lg:w-24 xl:w-28 h-1 sm:h-1.5 bg-orange-500 rounded-full origin-left"
             />
           </div>
 
           <p
             ref={subheadRef}
-            className="mt-2.5 sm:mt-3 text-base sm:text-xl md:text-2xl font-medium text-slate-200 tracking-wide"
+            className="mt-2 sm:mt-2.5 lg:mt-2.5 text-base sm:text-xl md:text-[1.2rem] lg:text-[1.25rem] xl:text-[1.4rem] font-medium text-slate-200 tracking-wide"
           >
             {SERVICES_CONTENT.subheading}
           </p>

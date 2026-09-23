@@ -80,7 +80,7 @@ export default function ClosingBanner() {
     <section
       id="closing-banner"
       ref={bannerRef}
-      className="relative min-h-[240px] sm:min-h-[260px] md:min-h-[270px] lg:min-h-[290px] xl:min-h-[340px] overflow-hidden flex items-center bg-[#0B2A5B] w-full"
+      className="relative min-h-[15rem] sm:min-h-[16.5rem] md:min-h-[17rem] lg:min-h-[18rem] xl:min-h-[21rem] overflow-hidden flex items-center bg-[#0B2A5B] w-full"
     >
       {/* Background Skyline Image with Hiker, Sunset, and Skyline - Pinned to right */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">

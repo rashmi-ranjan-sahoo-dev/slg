@@ -232,7 +232,7 @@ export default function ShareStory() {
           <div className="lg:col-span-1 hidden lg:flex justify-center h-full self-stretch">
             <div
               ref={dividerRef}
-              className="w-[1.5px] h-full min-h-[380px] bg-slate-200"
+              className="w-[1.5px] h-full min-h-[22rem] bg-slate-200"
             />
           </div>
           <div className="lg:hidden w-full h-[1.5px] bg-slate-200 my-4" />

@@ -36,6 +36,37 @@
   html {
     font-family: var(--font-sans);
     color: var(--color-slate-text);
+    /* Mobile baseline (strictly 16px to protect mobile screens) */
+    font-size: 16px;
+  }
+
+  /* Tablet, Laptop, and Desktop screens: Fluid root font-size scaling */
+  @media (min-width: 768px) {
+    html {
+      /* Scales fluidly with both viewport width and height so full sections fit */
+      font-size: clamp(12.5px, min(1vw + 1px, 1.85vh), 16px);
+    }
+  }
+
+  /* Laptops with compact vertical height (14" / 16" with browser bars / Windows display scaling) */
+  @media (min-width: 768px) and (max-height: 750px) {
+    html {
+      font-size: clamp(11.5px, 1.85vh, 13.5px);
+    }
+  }
+
+  /* Extreme short vertical viewports (< 640px, e.g. 150% display scaling on 1080p) */
+  @media (min-width: 768px) and (max-height: 640px) {
+    html {
+      font-size: clamp(11px, 1.8vh, 12.5px);
+    }
+  }
+
+  /* Ultra-wide / Large Desktop Monitors (27" QHD / 4K with width >= 2200px and height >= 1100px) */
+  @media (min-width: 2200px) and (min-height: 1100px) {
+    html {
+      font-size: clamp(16px, 0.95vw, 18px);
+    }
   }
 
   body {

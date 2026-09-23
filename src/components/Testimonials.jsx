@@ -270,7 +270,7 @@ export default function Testimonials() {
           <div className="md:col-span-5 flex flex-col">
             <div
               ref={spotlightRef}
-              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-6 md:p-6 lg:p-5 xl:p-7 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[340px] lg:min-h-[350px] xl:min-h-[400px]"
+              className="relative bg-white/10 backdrop-blur-md rounded-[16px] sm:rounded-[20px] p-4 sm:p-6 md:p-6 lg:p-5 xl:p-7 border border-white/15 shadow-2xl flex flex-col justify-between flex-grow overflow-hidden min-h-0 sm:min-h-[21.5rem] lg:min-h-[22rem] xl:min-h-[25rem]"
             >
               {/* Background Ambient Glow Accents */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -366,7 +366,7 @@ export default function Testimonials() {
               onMouseLeave={() => setIsPaused(false)}
               onTouchStart={() => setIsPaused(true)}
               onTouchEnd={() => setIsPaused(false)}
-              className="relative max-h-[350px] sm:max-h-[380px] md:max-h-[350px] lg:max-h-[360px] xl:max-h-[410px] overflow-hidden rounded-[20px] bg-[#0A1F4D]/60 border border-white/10 p-3 sm:p-3.5"
+              className="relative max-h-[22rem] sm:max-h-[24rem] md:max-h-[22rem] lg:max-h-[22.5rem] xl:max-h-[25.5rem] overflow-hidden rounded-[20px] bg-[#0A1F4D]/60 border border-white/10 p-3 sm:p-3.5"
             >
               {/* Gradient masks for smooth fade at top and bottom */}
               <div className="absolute top-0 left-0 right-0 h-8 sm:h-10 bg-gradient-to-b from-[#0B2A5B] to-transparent z-10 pointer-events-none" />
